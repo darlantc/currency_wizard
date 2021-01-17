@@ -9,11 +9,6 @@ import Foundation
 import XCTest
 @testable import CurrencyWizard
 
-struct CurrencyOption {
-	let name: String
-	let id: String
-}
-
 protocol CurrencyService {
 	func requestCurrencyOptions(completion: ([CurrencyOption]) -> Void)
 	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: (Double) -> Void)

@@ -12,6 +12,7 @@
 		0CE920C325B3D78A005CED5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE920C125B3D78A005CED5F /* LaunchScreen.storyboard */; };
 		0CE920D925B3D78A005CED5F /* CurrencyWizardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE920D825B3D78A005CED5F /* CurrencyWizardUITests.swift */; };
 		0CE9210925B3DA02005CED5F /* CurrencyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9210825B3DA02005CED5F /* CurrencyServiceTests.swift */; };
+		0CE9211325B3E03B005CED5F /* CurrencyOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9211225B3E03B005CED5F /* CurrencyOption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		0CE920D825B3D78A005CED5F /* CurrencyWizardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyWizardUITests.swift; sourceTree = "<group>"; };
 		0CE920DA25B3D78A005CED5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CE9210825B3DA02005CED5F /* CurrencyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceTests.swift; sourceTree = "<group>"; };
+		0CE9211225B3E03B005CED5F /* CurrencyOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		0CE920B525B3D787005CED5F /* CurrencyWizard */ = {
 			isa = PBXGroup;
 			children = (
+				0CE9211025B3E02C005CED5F /* Domain */,
 				0CE920E925B3D7D1005CED5F /* Main */,
 			);
 			path = CurrencyWizard;
@@ -141,6 +144,22 @@
 				0CE9210825B3DA02005CED5F /* CurrencyServiceTests.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		0CE9211025B3E02C005CED5F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9211125B3E032005CED5F /* Entities */,
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
+		0CE9211125B3E032005CED5F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9211225B3E03B005CED5F /* CurrencyOption.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CE920B725B3D787005CED5F /* AppDelegate.swift in Sources */,
+				0CE9211325B3E03B005CED5F /* CurrencyOption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
