@@ -22,4 +22,9 @@ final class FavoriteCurrencyOptionUseCase {
 	func isFavorited(currencyOption: CurrencyOption) -> Bool {
 		return self.favoritedIdsList.contains(currencyOption.id)
 	}
+	
+	func favorite(currencyOption: CurrencyOption) {
+		self.localStorageService.favorite(currencyOption: currencyOption)
+		self.favoritedIdsList.append(currencyOption.id)
+	}
 }
