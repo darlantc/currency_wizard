@@ -1,5 +1,5 @@
 //
-//  RequestLastUsedCurrencyOptionsUseCaseTests.swift
+//  LastUsedCurrencyOptionsUseCaseTests.swift
 //  CurrencyWizardTests
 //
 //  Created by Darlan Tódero ten Caten on 17/01/21.
@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import CurrencyWizard
 
-class RequestLastUsedCurrencyOptionsUseCaseTests: XCTestCase {
+class LastUsedCurrencyOptionsUseCaseTests: XCTestCase {
 	func test_initSUT_shouldBeNil() {
 		let sut = makeSUT()
 		
@@ -50,12 +50,12 @@ class RequestLastUsedCurrencyOptionsUseCaseTests: XCTestCase {
 		lastUsedFromCurrencyOption: CurrencyOption? = nil,
 		lastUsedToCurrencyOption: CurrencyOption? = nil,
 		localStorageServiceDidCallListener: ((String) -> Void)? = nil
-	) -> RequestLastUsedCurrencyOptionsUseCase {
+	) -> LastUsedCurrencyOptionsUseCase {
 		let localStorageService = LocalStorageServiceMock(
 			didCallListener: localStorageServiceDidCallListener,
 			lastUsedFromCurrencyOption: lastUsedFromCurrencyOption,
 			lastUsedToCurrencyOption: lastUsedToCurrencyOption
 		)
-		return RequestLastUsedCurrencyOptionsUseCase(localStorageService: localStorageService)
+		return LastUsedCurrencyOptionsUseCase(localStorageService: localStorageService)
 	}
 }

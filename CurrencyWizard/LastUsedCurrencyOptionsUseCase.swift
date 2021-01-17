@@ -1,5 +1,5 @@
 //
-//  RequestLastUsedCurrencyOptionsUseCase.swift
+//  LastUsedCurrencyOptionsUseCase.swift
 //  CurrencyWizard
 //
 //  Created by Darlan Tódero ten Caten on 17/01/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RequestLastUsedCurrencyOptionsUseCase {
+final class LastUsedCurrencyOptionsUseCase {
 	private let localStorageService: LocalStorageService
 	var lastUsedFromCurrencyOption: CurrencyOption?
 	var lastUsedToCurrencyOption: CurrencyOption?
