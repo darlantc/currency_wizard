@@ -11,15 +11,29 @@ import Foundation
 class LocalStorageServiceMock: LocalStorageService {
 	private var idsList: [String]
 	private let didCallListener: ((String) -> Void)?
+	private var lastUsedFromCurrencyOption: CurrencyOption?
+	private var lastUsedToCurrencyOption: CurrencyOption?
 	
-	init(idsList: [String], didCallListener: ((String) -> Void)? = nil) {
+	init(idsList: [String] = [], didCallListener: ((String) -> Void)? = nil) {
 		self.idsList = idsList
 		self.didCallListener = didCallListener
 	}
 	
 	func requestLastUsedCurrencyOptions(completion: ((from: CurrencyOption, to: CurrencyOption)?) -> Void) {
 		self.didCallListener?("requestLastUsedCurrencyOptions")
-		completion(nil)
+		
+		guard let from = self.lastUsedFromCurrencyOption, let to = self.lastUsedToCurrencyOption else {
+			completion(nil)
+			return
+		}
+		completion((from, to))
+	}
+	
+	func saveLastUsedCurrencyOptions(from fromCurrencyOption: CurrencyOption, to toCurrencyOption: CurrencyOption) {
+		self.didCallListener?("saveLastUsedCurrencyOptions")
+
+		self.lastUsedFromCurrencyOption = fromCurrencyOption
+		self.lastUsedToCurrencyOption = toCurrencyOption
 	}
 	
 	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void) {

@@ -32,12 +32,25 @@ class LocalStorageServiceTests: XCTestCase {
 		XCTAssertEqual(sut.internalCalls, ["requestLastUsedCurrencyOptions", "requestLastUsedCurrencyOptions"])
 	}
 	
-	func test_requestLastUsedCurrencyOptions_shouldReturnValidData() {
+	func test_withoutLastUsedData_requestLastUsedCurrencyOptions_shouldReturnNil() {
 		var response: (from: CurrencyOption, to: CurrencyOption)? = nil
 		
 		let sut = makeSUT()
 		sut.requestLastUsedCurrencyOptions { response = $0 }
 		
+		XCTAssertNil(sut.lastUsedFromCurrencyOption)
+		XCTAssertNil(sut.lastUsedToCurrencyOption)
+		XCTAssertNil(response)
+	}
+	
+	func test_withLastUsedData_requestLastUsedCurrencyOptions_shouldReturnValidData() {
+		var response: (from: CurrencyOption, to: CurrencyOption)? = nil
+		
+		let sut = makeSUT(lastUsedFromCurrencyOption: usdCurrencyOption, lastUsedToCurrencyOption: eurCurrencyOption)
+		sut.requestLastUsedCurrencyOptions { response = $0 }
+		
+		XCTAssertNotNil(sut.lastUsedFromCurrencyOption)
+		XCTAssertNotNil(sut.lastUsedToCurrencyOption)
 		XCTAssertEqual(response?.from.id, usdCurrencyOption.id)
 		XCTAssertEqual(response?.to.id, eurCurrencyOption.id)
 	}
@@ -144,8 +157,16 @@ class LocalStorageServiceTests: XCTestCase {
 	}
 	
 	// MARK: Helpers
-	private func makeSUT(idsList: [String] = []) -> LocalStorageServiceStub {
-		return LocalStorageServiceStub(idsList)
+	private func makeSUT(
+		idsList: [String] = [],
+		lastUsedFromCurrencyOption: CurrencyOption? = nil,
+		lastUsedToCurrencyOption: CurrencyOption? = nil
+	) -> LocalStorageServiceStub {
+		return LocalStorageServiceStub(
+			idsList,
+			lastUsedFromCurrencyOption: lastUsedFromCurrencyOption,
+			lastUsedToCurrencyOption: lastUsedToCurrencyOption
+		)
 	}
 }
 
@@ -154,14 +175,32 @@ private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
 
 private class LocalStorageServiceStub: LocalStorageService {
 	private var idsList: [String]
+	private (set) var lastUsedFromCurrencyOption: CurrencyOption?
+	private (set) var lastUsedToCurrencyOption: CurrencyOption?
 	
-	init(_ idsList: [String]) {
+	init(
+		_ idsList: [String],
+		lastUsedFromCurrencyOption: CurrencyOption? = nil,
+		lastUsedToCurrencyOption: CurrencyOption? = nil
+	) {
 		self.idsList = idsList
+		self.lastUsedFromCurrencyOption = lastUsedFromCurrencyOption
+		self.lastUsedToCurrencyOption = lastUsedToCurrencyOption
 	}
 	
 	func requestLastUsedCurrencyOptions(completion: ((from: CurrencyOption, to: CurrencyOption)?) -> Void) {
 		self.didCall(function: "requestLastUsedCurrencyOptions")
-		completion((usdCurrencyOption, eurCurrencyOption))
+		
+		guard let from = self.lastUsedFromCurrencyOption, let to = self.lastUsedToCurrencyOption else {
+			completion(nil)
+			return
+		}
+		completion((from, to))
+	}
+	
+	func saveLastUsedCurrencyOptions(from fromCurrencyOption: CurrencyOption, to toCurrencyOption: CurrencyOption) {
+		self.lastUsedFromCurrencyOption = fromCurrencyOption
+		self.lastUsedToCurrencyOption = toCurrencyOption
 	}
 	
 	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void) {
