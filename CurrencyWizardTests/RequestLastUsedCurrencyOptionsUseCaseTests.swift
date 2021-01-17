@@ -17,6 +17,31 @@ class RequestLastUsedCurrencyOptionsUseCaseTests: XCTestCase {
 		XCTAssertNil(sut.lastUsedToCurrencyOption)
 	}
 	
+	func test_initWithLastUsedFrom_shouldBeNil() {
+		let sut = makeSUT(lastUsedFromCurrencyOption: usdCurrencyOption)
+		
+		XCTAssertNil(sut.lastUsedFromCurrencyOption)
+		XCTAssertNil(sut.lastUsedToCurrencyOption)
+	}
+	
+	func test_initWithLastUsedTo_shouldBeNil() {
+		let sut = makeSUT(lastUsedToCurrencyOption: eurCurrencyOption)
+		
+		XCTAssertNil(sut.lastUsedFromCurrencyOption)
+		XCTAssertNil(sut.lastUsedToCurrencyOption)
+	}
+	
+	func test_initWithBothLastUsedFromAndTo_shouldReturnIt() {
+		let sut = makeSUT(
+			lastUsedFromCurrencyOption: usdCurrencyOption,
+			lastUsedToCurrencyOption: eurCurrencyOption)
+		
+		XCTAssertNotNil(sut.lastUsedFromCurrencyOption)
+		XCTAssertEqual(sut.lastUsedFromCurrencyOption, usdCurrencyOption)
+		XCTAssertNotNil(sut.lastUsedToCurrencyOption)
+		XCTAssertEqual(sut.lastUsedToCurrencyOption, eurCurrencyOption)
+	}
+	
 	// MARK: Helpers
 	private let usdCurrencyOption = CurrencyOption(name: "United States Dollar", id: "USD")
 	private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
