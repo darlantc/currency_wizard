@@ -21,4 +21,11 @@ final class LastUsedCurrencyOptionsUseCase {
 			weakSelf.lastUsedToCurrencyOption = lastUsed.to
 		}
 	}
+	
+	func saveLastUsedCurrencyOptions(from fromCurrencyOption: CurrencyOption, to toCurrencyOption: CurrencyOption) {
+		self.lastUsedFromCurrencyOption = fromCurrencyOption
+		self.lastUsedToCurrencyOption = toCurrencyOption
+//		
+		self.localStorageService.saveLastUsedCurrencyOptions(from: fromCurrencyOption, to: toCurrencyOption)
+	}
 }

@@ -42,6 +42,21 @@ class LastUsedCurrencyOptionsUseCaseTests: XCTestCase {
 		XCTAssertEqual(sut.lastUsedToCurrencyOption, eurCurrencyOption)
 	}
 	
+	func test_initWithoutLastUsed_saveLastUsed_shouldReturnIt() {
+		var localStorageServiceDidCallListener = [String]()
+		let sut = makeSUT() { localStorageServiceDidCallListener.append($0) }
+		
+		sut.saveLastUsedCurrencyOptions(from: eurCurrencyOption, to: usdCurrencyOption)
+		XCTAssertEqual(sut.lastUsedFromCurrencyOption, eurCurrencyOption)
+		XCTAssertEqual(sut.lastUsedToCurrencyOption, usdCurrencyOption)
+		XCTAssertEqual(localStorageServiceDidCallListener, ["requestLastUsedCurrencyOptions", "saveLastUsedCurrencyOptions"])
+		
+		sut.saveLastUsedCurrencyOptions(from: usdCurrencyOption, to: eurCurrencyOption)
+		XCTAssertEqual(sut.lastUsedFromCurrencyOption, usdCurrencyOption)
+		XCTAssertEqual(sut.lastUsedToCurrencyOption, eurCurrencyOption)
+		XCTAssertEqual(localStorageServiceDidCallListener, ["requestLastUsedCurrencyOptions", "saveLastUsedCurrencyOptions", "saveLastUsedCurrencyOptions"])
+	}
+	
 	// MARK: Helpers
 	private let usdCurrencyOption = CurrencyOption(name: "United States Dollar", id: "USD")
 	private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
