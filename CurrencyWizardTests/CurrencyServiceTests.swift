@@ -16,6 +16,7 @@ struct CurrencyOption {
 
 protocol CurrencyService {
 	func requestCurrencyOptions(completion: ([CurrencyOption]) -> Void)
+	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: (Double) -> Void)
 }
 
 class CurrencyServiceTests: XCTestCase {
@@ -50,6 +51,30 @@ class CurrencyServiceTests: XCTestCase {
 		XCTAssertFalse(response.isEmpty)
 	}
 	
+	func test_requestExchangeRate_shouldRequestExchangeRate() {
+		var requestCount = 0
+		
+		func requestCallback(exchangeRate: Double) -> Void {
+			requestCount += 1
+		}
+		
+		let sut = makeSUT()
+		sut.requestExchangeRate(from: usdCurrencyOption, to: eurCurrencyOption, completion: requestCallback)
+		XCTAssertEqual(requestCount, 1)
+		XCTAssertEqual(sut.internalCalls, ["requestExchangeRate"])
+		
+		sut.requestExchangeRate(from: eurCurrencyOption, to: usdCurrencyOption, completion: requestCallback)
+		XCTAssertEqual(requestCount, 2)
+		XCTAssertEqual(sut.internalCalls, ["requestExchangeRate", "requestExchangeRate"])
+	}
+	
+	func test_requestExchangeRate_shouldReturnValidDouble() {
+		var response: Double = 0
+		
+		let sut = makeSUT()
+		sut.requestExchangeRate(from: usdCurrencyOption, to: eurCurrencyOption) { response = $0 }
+		XCTAssertTrue(response > 0)
+	}
 	
 	// MARK: Helpers
 	private func makeSUT() -> CurrencyServiceStub {
@@ -57,12 +82,21 @@ class CurrencyServiceTests: XCTestCase {
 	}
 }
 
+private let usdCurrencyOption = CurrencyOption(name: "United States Dollar", id: "USD")
+private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
+
 private class CurrencyServiceStub: CurrencyService {
 	func requestCurrencyOptions(completion: ([CurrencyOption]) -> Void) {
 		self.didCall(function: "requestCurrencyOptions")
 		completion([
-			CurrencyOption(name: "United States Dollar", id: "USD")
+			usdCurrencyOption,
+			eurCurrencyOption
 		])
+	}
+	
+	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: (Double) -> Void) {
+		self.didCall(function: "requestExchangeRate")
+		completion(1.0)
 	}
 	
 	var internalCalls = [String]()
