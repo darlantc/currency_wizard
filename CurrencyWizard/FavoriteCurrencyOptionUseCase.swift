@@ -27,4 +27,9 @@ final class FavoriteCurrencyOptionUseCase {
 		self.localStorageService.favorite(currencyOption: currencyOption)
 		self.favoritedIdsList.append(currencyOption.id)
 	}
+	
+	func removeFavorite(currencyOption: CurrencyOption) {
+		self.localStorageService.removeFavorite(currencyOption: currencyOption)
+		self.favoritedIdsList = self.favoritedIdsList.filter { $0 != currencyOption.id }
+	}
 }

@@ -29,6 +29,7 @@ class FavoriteCurrencyOptionUseCaseTests: XCTestCase {
 		
 		let sut = makeSUT(localStorageServiceIdsList: []) { localStorageServiceDidCallListener.append($0) }
 		XCTAssertFalse(sut.isFavorited(currencyOption: usdCurrencyOption))
+		XCTAssertFalse(sut.isFavorited(currencyOption: eurCurrencyOption))
 		
 		sut.favorite(currencyOption: usdCurrencyOption)
 		XCTAssertTrue(sut.isFavorited(currencyOption: usdCurrencyOption))
@@ -37,6 +38,22 @@ class FavoriteCurrencyOptionUseCaseTests: XCTestCase {
 		sut.favorite(currencyOption: eurCurrencyOption)
 		XCTAssertTrue(sut.isFavorited(currencyOption: eurCurrencyOption))
 		XCTAssertEqual(localStorageServiceDidCallListener, ["requestFavoriteCurrencyOptionIds", "favorite(currencyOption:)", "favorite(currencyOption:)"])
+	}
+	
+	func test_didRemoveFavoriteCurrencyOption_shouldNotFavorited() {
+		var localStorageServiceDidCallListener = [String]()
+		
+		let sut = makeSUT(localStorageServiceIdsList: [usdCurrencyOption.id, eurCurrencyOption.id]) { localStorageServiceDidCallListener.append($0) }
+		XCTAssertTrue(sut.isFavorited(currencyOption: usdCurrencyOption))
+		XCTAssertTrue(sut.isFavorited(currencyOption: eurCurrencyOption))
+		
+		sut.removeFavorite(currencyOption: usdCurrencyOption)
+		XCTAssertFalse(sut.isFavorited(currencyOption: usdCurrencyOption))
+		XCTAssertEqual(localStorageServiceDidCallListener, ["requestFavoriteCurrencyOptionIds", "removeFavorite(currencyOption:)"])
+		
+		sut.removeFavorite(currencyOption: eurCurrencyOption)
+		XCTAssertFalse(sut.isFavorited(currencyOption: eurCurrencyOption))
+		XCTAssertEqual(localStorageServiceDidCallListener, ["requestFavoriteCurrencyOptionIds", "removeFavorite(currencyOption:)", "removeFavorite(currencyOption:)"])
 	}
 	
 	// MARK: Helpers
