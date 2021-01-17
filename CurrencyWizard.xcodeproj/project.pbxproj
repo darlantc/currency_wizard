@@ -24,6 +24,8 @@
 		0CE9215125B472E6005CED5F /* FavoriteCurrencyOptionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9215025B472E6005CED5F /* FavoriteCurrencyOptionUseCaseTests.swift */; };
 		0CE9215925B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9215825B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift */; };
 		0CE9215E25B47434005CED5F /* LocalStorageServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9215D25B47434005CED5F /* LocalStorageServiceMock.swift */; };
+		0CE9216625B47B50005CED5F /* RequestLastUsedCurrencyOptionsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9216525B47B50005CED5F /* RequestLastUsedCurrencyOptionsUseCaseTests.swift */; };
+		0CE9216B25B47B76005CED5F /* RequestLastUsedCurrencyOptionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9216A25B47B76005CED5F /* RequestLastUsedCurrencyOptionsUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		0CE9215025B472E6005CED5F /* FavoriteCurrencyOptionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCurrencyOptionUseCaseTests.swift; sourceTree = "<group>"; };
 		0CE9215825B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCurrencyOptionUseCase.swift; sourceTree = "<group>"; };
 		0CE9215D25B47434005CED5F /* LocalStorageServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageServiceMock.swift; sourceTree = "<group>"; };
+		0CE9216525B47B50005CED5F /* RequestLastUsedCurrencyOptionsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLastUsedCurrencyOptionsUseCaseTests.swift; sourceTree = "<group>"; };
+		0CE9216A25B47B76005CED5F /* RequestLastUsedCurrencyOptionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLastUsedCurrencyOptionsUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,7 @@
 				0CE9212225B3E0D8005CED5F /* RequestCurrencyOptionsUseCaseTests.swift */,
 				0CE9213825B3E60A005CED5F /* ConvertCurrencyUseCaseTests.swift */,
 				0CE9215025B472E6005CED5F /* FavoriteCurrencyOptionUseCaseTests.swift */,
+				0CE9216525B47B50005CED5F /* RequestLastUsedCurrencyOptionsUseCaseTests.swift */,
 			);
 			name = UseCases;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				0CE9212B25B3E1D6005CED5F /* RequestCurrencyOptionsUseCase.swift */,
 				0CE9213325B3E5F9005CED5F /* ConvertCurrencyUseCase.swift */,
 				0CE9215825B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift */,
+				0CE9216A25B47B76005CED5F /* RequestLastUsedCurrencyOptionsUseCase.swift */,
 			);
 			name = UseCases;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				0CE9215925B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift in Sources */,
 				0CE9214725B3EF3F005CED5F /* LocalStorageService.swift in Sources */,
 				0CE920B725B3D787005CED5F /* AppDelegate.swift in Sources */,
+				0CE9216B25B47B76005CED5F /* RequestLastUsedCurrencyOptionsUseCase.swift in Sources */,
 				0CE9211325B3E03B005CED5F /* CurrencyOption.swift in Sources */,
 				0CE9211C25B3E093005CED5F /* CurrencyService.swift in Sources */,
 				0CE9212C25B3E1D6005CED5F /* RequestCurrencyOptionsUseCase.swift in Sources */,
@@ -383,6 +390,7 @@
 				0CE9215125B472E6005CED5F /* FavoriteCurrencyOptionUseCaseTests.swift in Sources */,
 				0CE9214C25B3EF55005CED5F /* LocalStorageServiceTests.swift in Sources */,
 				0CE9213925B3E60A005CED5F /* ConvertCurrencyUseCaseTests.swift in Sources */,
+				0CE9216625B47B50005CED5F /* RequestLastUsedCurrencyOptionsUseCaseTests.swift in Sources */,
 				0CE9213F25B3E67A005CED5F /* CurrencyServiceMock.swift in Sources */,
 				0CE9215E25B47434005CED5F /* LocalStorageServiceMock.swift in Sources */,
 				0CE9212325B3E0D8005CED5F /* RequestCurrencyOptionsUseCaseTests.swift in Sources */,
