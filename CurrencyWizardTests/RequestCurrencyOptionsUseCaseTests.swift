@@ -45,20 +45,7 @@ class RequestCurrencyOptionsUseCaseTests: XCTestCase {
 	private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
 	
 	func makeSUT(options: [CurrencyOption] = []) -> RequestCurrencyOptionsUseCase {
-		let currencyService = CurrencyServiceMock(options)
+		let currencyService = CurrencyServiceMock(options: options)
 		return RequestCurrencyOptionsUseCase(currencyService: currencyService)
 	}
-}
-
-private class CurrencyServiceMock: CurrencyService {
-	let options: [CurrencyOption]
-	
-	init(_ options: [CurrencyOption]) {
-		self.options = options
-	}
-	
-	func requestCurrencyOptions(completion: ([CurrencyOption]) -> Void) {
-		completion(self.options)
-	}
-	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: (Double) -> Void) {}
 }

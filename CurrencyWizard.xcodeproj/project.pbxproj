@@ -16,6 +16,9 @@
 		0CE9211C25B3E093005CED5F /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9211B25B3E093005CED5F /* CurrencyService.swift */; };
 		0CE9212325B3E0D8005CED5F /* RequestCurrencyOptionsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9212225B3E0D8005CED5F /* RequestCurrencyOptionsUseCaseTests.swift */; };
 		0CE9212C25B3E1D6005CED5F /* RequestCurrencyOptionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9212B25B3E1D6005CED5F /* RequestCurrencyOptionsUseCase.swift */; };
+		0CE9213425B3E5F9005CED5F /* ConvertCurrencyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9213325B3E5F9005CED5F /* ConvertCurrencyUseCase.swift */; };
+		0CE9213925B3E60A005CED5F /* ConvertCurrencyUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9213825B3E60A005CED5F /* ConvertCurrencyUseCaseTests.swift */; };
+		0CE9213F25B3E67A005CED5F /* CurrencyServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9213E25B3E67A005CED5F /* CurrencyServiceMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		0CE9211B25B3E093005CED5F /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 		0CE9212225B3E0D8005CED5F /* RequestCurrencyOptionsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCurrencyOptionsUseCaseTests.swift; sourceTree = "<group>"; };
 		0CE9212B25B3E1D6005CED5F /* RequestCurrencyOptionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCurrencyOptionsUseCase.swift; sourceTree = "<group>"; };
+		0CE9213325B3E5F9005CED5F /* ConvertCurrencyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyUseCase.swift; sourceTree = "<group>"; };
+		0CE9213825B3E60A005CED5F /* ConvertCurrencyUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyUseCaseTests.swift; sourceTree = "<group>"; };
+		0CE9213E25B3E67A005CED5F /* CurrencyServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,7 @@
 			children = (
 				0CE9212025B3E0CB005CED5F /* Domain */,
 				0CE9210725B3D9EE005CED5F /* Services */,
+				0CE9213D25B3E65B005CED5F /* Helpers */,
 				0CE920F025B3D813005CED5F /* Main */,
 			);
 			path = CurrencyWizardTests;
@@ -191,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE9212225B3E0D8005CED5F /* RequestCurrencyOptionsUseCaseTests.swift */,
+				0CE9213825B3E60A005CED5F /* ConvertCurrencyUseCaseTests.swift */,
 			);
 			name = UseCases;
 			sourceTree = "<group>";
@@ -199,8 +207,17 @@
 			isa = PBXGroup;
 			children = (
 				0CE9212B25B3E1D6005CED5F /* RequestCurrencyOptionsUseCase.swift */,
+				0CE9213325B3E5F9005CED5F /* ConvertCurrencyUseCase.swift */,
 			);
 			name = UseCases;
+			sourceTree = "<group>";
+		};
+		0CE9213D25B3E65B005CED5F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9213E25B3E67A005CED5F /* CurrencyServiceMock.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CE9213425B3E5F9005CED5F /* ConvertCurrencyUseCase.swift in Sources */,
 				0CE920B725B3D787005CED5F /* AppDelegate.swift in Sources */,
 				0CE9211325B3E03B005CED5F /* CurrencyOption.swift in Sources */,
 				0CE9211C25B3E093005CED5F /* CurrencyService.swift in Sources */,
@@ -345,6 +363,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CE9210925B3DA02005CED5F /* CurrencyServiceTests.swift in Sources */,
+				0CE9213925B3E60A005CED5F /* ConvertCurrencyUseCaseTests.swift in Sources */,
+				0CE9213F25B3E67A005CED5F /* CurrencyServiceMock.swift in Sources */,
 				0CE9212325B3E0D8005CED5F /* RequestCurrencyOptionsUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
