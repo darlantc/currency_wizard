@@ -9,11 +9,6 @@ import Foundation
 import XCTest
 @testable import CurrencyWizard
 
-protocol CurrencyService {
-	func requestCurrencyOptions(completion: ([CurrencyOption]) -> Void)
-	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: (Double) -> Void)
-}
-
 class CurrencyServiceTests: XCTestCase {
 	func test_initSUT_shouldNotRequestAnything() {
 		let sut = makeSUT()

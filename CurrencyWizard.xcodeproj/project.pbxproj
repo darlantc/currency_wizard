@@ -13,6 +13,7 @@
 		0CE920D925B3D78A005CED5F /* CurrencyWizardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE920D825B3D78A005CED5F /* CurrencyWizardUITests.swift */; };
 		0CE9210925B3DA02005CED5F /* CurrencyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9210825B3DA02005CED5F /* CurrencyServiceTests.swift */; };
 		0CE9211325B3E03B005CED5F /* CurrencyOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9211225B3E03B005CED5F /* CurrencyOption.swift */; };
+		0CE9211C25B3E093005CED5F /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9211B25B3E093005CED5F /* CurrencyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		0CE920DA25B3D78A005CED5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CE9210825B3DA02005CED5F /* CurrencyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceTests.swift; sourceTree = "<group>"; };
 		0CE9211225B3E03B005CED5F /* CurrencyOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyOption.swift; sourceTree = "<group>"; };
+		0CE9211B25B3E093005CED5F /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE9211025B3E02C005CED5F /* Domain */,
+				0CE9211A25B3E082005CED5F /* Services */,
 				0CE920E925B3D7D1005CED5F /* Main */,
 			);
 			path = CurrencyWizard;
@@ -160,6 +163,14 @@
 				0CE9211225B3E03B005CED5F /* CurrencyOption.swift */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		0CE9211A25B3E082005CED5F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9211B25B3E093005CED5F /* CurrencyService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +305,7 @@
 			files = (
 				0CE920B725B3D787005CED5F /* AppDelegate.swift in Sources */,
 				0CE9211325B3E03B005CED5F /* CurrencyOption.swift in Sources */,
+				0CE9211C25B3E093005CED5F /* CurrencyService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
