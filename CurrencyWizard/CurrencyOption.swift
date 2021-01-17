@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrencyOption {
+struct CurrencyOption: Equatable {
 	let name: String
 	let id: String
 }
