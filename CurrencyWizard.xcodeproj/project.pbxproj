@@ -11,6 +11,7 @@
 		0CE920C025B3D78A005CED5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE920BF25B3D78A005CED5F /* Assets.xcassets */; };
 		0CE920C325B3D78A005CED5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE920C125B3D78A005CED5F /* LaunchScreen.storyboard */; };
 		0CE920D925B3D78A005CED5F /* CurrencyWizardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE920D825B3D78A005CED5F /* CurrencyWizardUITests.swift */; };
+		0CE9210925B3DA02005CED5F /* CurrencyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9210825B3DA02005CED5F /* CurrencyServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		0CE920D425B3D78A005CED5F /* CurrencyWizardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyWizardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE920D825B3D78A005CED5F /* CurrencyWizardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyWizardUITests.swift; sourceTree = "<group>"; };
 		0CE920DA25B3D78A005CED5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CE9210825B3DA02005CED5F /* CurrencyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		0CE920CC25B3D78A005CED5F /* CurrencyWizardTests */ = {
 			isa = PBXGroup;
 			children = (
+				0CE9210725B3D9EE005CED5F /* Services */,
 				0CE920F025B3D813005CED5F /* Main */,
 			);
 			path = CurrencyWizardTests;
@@ -130,6 +133,14 @@
 				0CE920CF25B3D78A005CED5F /* Info.plist */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		0CE9210725B3D9EE005CED5F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9210825B3DA02005CED5F /* CurrencyServiceTests.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +213,7 @@
 					};
 					0CE920C825B3D78A005CED5F = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 						TestTargetID = 0CE920B225B3D787005CED5F;
 					};
 					0CE920D325B3D78A005CED5F = {
@@ -269,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CE9210925B3DA02005CED5F /* CurrencyServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +479,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KU2Z337W8K;
 				INFOPLIST_FILE = CurrencyWizardTests/Info.plist;
@@ -477,6 +491,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.darlantc.CurrencyWizardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CurrencyWizard.app/CurrencyWizard";
@@ -488,6 +503,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KU2Z337W8K;
 				INFOPLIST_FILE = CurrencyWizardTests/Info.plist;
