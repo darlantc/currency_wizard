@@ -42,9 +42,39 @@ class LocalStorageServiceTests: XCTestCase {
 		XCTAssertEqual(response?.to.id, "EUR")
 	}
 	
+	func test_noOneIsFavorited_requestFavoriteCurrencyOptionIds_returnEmptyList() {
+		var response = [String]()
+		
+		let sut = makeSUT(idsList: [])
+		sut.requestFavoriteCurrencyOptionIds { response = $0 }
+		XCTAssertEqual(response, [])
+	}
+	
+	func test_hasFavorites_requestFavoriteCurrencyOptionIds_returnFavoriteIds() {
+		var requestCount = 0
+		var response = [String]()
+		
+		func completionCallback(ids: [String]) -> Void {
+			requestCount += 1
+			response = ids
+		}
+		
+		let sut = makeSUT(idsList: ["USD", "EUR"])
+		sut.requestFavoriteCurrencyOptionIds(completion: completionCallback)
+		XCTAssertEqual(requestCount, 1)
+		XCTAssertEqual(response, ["USD", "EUR"])
+		XCTAssertEqual(sut.internalCalls, ["requestFavoriteCurrencyOptionIds"])
+		
+		sut.requestFavoriteCurrencyOptionIds(completion: completionCallback)
+		XCTAssertEqual(requestCount, 2)
+		XCTAssertEqual(response, ["USD", "EUR"])
+		XCTAssertEqual(sut.internalCalls, ["requestFavoriteCurrencyOptionIds", "requestFavoriteCurrencyOptionIds"])
+	}
+
+	
 	// MARK: Helpers
-	private func makeSUT() -> LocalStorageServiceStub {
-		return LocalStorageServiceStub()
+	private func makeSUT(idsList: [String] = []) -> LocalStorageServiceStub {
+		return LocalStorageServiceStub(idsList)
 	}
 }
 
@@ -52,9 +82,20 @@ private let usdCurrencyOption = CurrencyOption(name: "United States Dollar", id:
 private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
 
 private class LocalStorageServiceStub: LocalStorageService {
+	private let idsList: [String]
+	
+	init(_ idsList: [String]) {
+		self.idsList = idsList
+	}
+	
 	func requestLastUsedCurrencyOptions(completion: ((from: CurrencyOption, to: CurrencyOption)?) -> Void) {
-		completion((usdCurrencyOption, eurCurrencyOption))
 		self.didCall(function: "requestLastUsedCurrencyOptions")
+		completion((usdCurrencyOption, eurCurrencyOption))
+	}
+	
+	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void) {
+		self.didCall(function: "requestFavoriteCurrencyOptionIds")
+		completion(self.idsList)
 	}
 
 	var internalCalls = [String]()
