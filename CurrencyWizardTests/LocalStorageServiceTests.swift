@@ -71,6 +71,41 @@ class LocalStorageServiceTests: XCTestCase {
 		XCTAssertEqual(sut.internalCalls, ["requestFavoriteCurrencyOptionIds", "requestFavoriteCurrencyOptionIds"])
 	}
 
+	func test_favoriteCurrencyOption_returnIdAsFavorite() {
+		var requestResponse = [String]()
+		
+		func completionCallback(ids: [String]) -> Void {
+			requestResponse = ids
+		}
+		
+		let sut = makeSUT(idsList: [])
+		
+		sut.requestFavoriteCurrencyOptionIds(completion: completionCallback)
+		XCTAssertFalse(requestResponse.contains(usdCurrencyOption.id))
+		XCTAssertFalse(requestResponse.contains(eurCurrencyOption.id))
+		
+		sut.favorite(currencyOption: usdCurrencyOption)
+		sut.requestFavoriteCurrencyOptionIds(completion: completionCallback)
+		XCTAssertTrue(requestResponse.contains(usdCurrencyOption.id))
+		XCTAssertFalse(requestResponse.contains(eurCurrencyOption.id))
+		XCTAssertEqual(sut.internalCalls, [
+			"requestFavoriteCurrencyOptionIds",
+			"favorite(currencyOption:)",
+			"requestFavoriteCurrencyOptionIds"
+		])
+		
+		sut.favorite(currencyOption: eurCurrencyOption)
+		sut.requestFavoriteCurrencyOptionIds(completion: completionCallback)
+		XCTAssertTrue(requestResponse.contains(usdCurrencyOption.id))
+		XCTAssertTrue(requestResponse.contains(eurCurrencyOption.id))
+		XCTAssertEqual(sut.internalCalls, [
+			"requestFavoriteCurrencyOptionIds",
+			"favorite(currencyOption:)",
+			"requestFavoriteCurrencyOptionIds",
+			"favorite(currencyOption:)",
+			"requestFavoriteCurrencyOptionIds"
+		])
+	}
 	
 	// MARK: Helpers
 	private func makeSUT(idsList: [String] = []) -> LocalStorageServiceStub {
@@ -82,7 +117,7 @@ private let usdCurrencyOption = CurrencyOption(name: "United States Dollar", id:
 private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
 
 private class LocalStorageServiceStub: LocalStorageService {
-	private let idsList: [String]
+	private var idsList: [String]
 	
 	init(_ idsList: [String]) {
 		self.idsList = idsList
@@ -96,6 +131,11 @@ private class LocalStorageServiceStub: LocalStorageService {
 	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void) {
 		self.didCall(function: "requestFavoriteCurrencyOptionIds")
 		completion(self.idsList)
+	}
+	
+	func favorite(currencyOption: CurrencyOption) {
+		self.didCall(function: "favorite(currencyOption:)")
+		self.idsList.append(currencyOption.id)
 	}
 
 	var internalCalls = [String]()
