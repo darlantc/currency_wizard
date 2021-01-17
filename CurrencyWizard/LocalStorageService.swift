@@ -11,4 +11,5 @@ protocol LocalStorageService {
 	func requestLastUsedCurrencyOptions(completion: ((from: CurrencyOption, to: CurrencyOption)?) -> Void)
 	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void)
 	func favorite(currencyOption: CurrencyOption)
+	func removeFavorite(currencyOption: CurrencyOption)
 }
