@@ -52,7 +52,6 @@ class SelectCurrencyOptionViewController: UIViewController {
 	}
 	
 	private func updateViewsForIsLoading(isLoading: Bool) {
-		print("updateViewsForIsLoading \(isLoading)")
 		self.tableView.isHidden = isLoading
 		self.loadingView.isHidden = !isLoading
 	}
