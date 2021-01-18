@@ -10,6 +10,7 @@ import UIKit
 class SelectCurrencyOptionViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView! {
 		didSet {
+			tableView.isHidden = true
 			tableView.delegate = self
 			tableView.dataSource = self
 		}
@@ -17,6 +18,11 @@ class SelectCurrencyOptionViewController: UIViewController {
 	@IBOutlet weak var headerLabel: UILabel! {
 		didSet {
 			headerLabel.text = viewModel.headerText
+		}
+	}
+	@IBOutlet weak var loadingView: UIActivityIndicatorView! {
+		didSet {
+			loadingView.isHidden = false
 		}
 	}
 	
@@ -38,10 +44,17 @@ class SelectCurrencyOptionViewController: UIViewController {
 	// MARK: Utilities
 	private func bindToViewModel() {
 		viewModel.currencyOptionsList.observe(on: self) { _ in self.updateViews() }
+		viewModel.isLoading.observe(on: self, observerCallback: self.updateViewsForIsLoading)
 	}
 	
 	private func updateViews() {
 		self.tableView.reloadData()
+	}
+	
+	private func updateViewsForIsLoading(isLoading: Bool) {
+		print("updateViewsForIsLoading \(isLoading)")
+		self.tableView.isHidden = isLoading
+		self.loadingView.isHidden = !isLoading
 	}
 }
 

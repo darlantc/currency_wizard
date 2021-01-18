@@ -21,6 +21,13 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 		XCTAssertEqual(sut.tableView?.numberOfRows(), 0)
     }
 	
+	func test_initSUT_witOptions_shouldDisplayLoadingAnimation() {
+		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
+		waitForLoadingExpectation()
+		XCTAssertTrue(sut.loadingView.isHidden)
+		XCTAssertFalse(sut.tableView.isHidden)
+	}
+	
 	func test_initSUT_withOptions_shouldHaveCells() {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
 		waitForLoadingExpectation()

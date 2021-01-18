@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectCurrencyOptionViewController" customModule="CurrencyWizard" customModuleProvider="target">
             <connections>
                 <outlet property="headerLabel" destination="JX9-bg-j8Q" id="3Ux-XN-GJe"/>
+                <outlet property="loadingView" destination="AQg-fZ-nuL" id="RPa-GL-Bsp"/>
                 <outlet property="tableView" destination="5xU-Eb-k81" id="WLJ-VV-lVk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,14 +32,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="AQg-fZ-nuL">
+                    <rect key="frame" x="169" y="392.66666666666669" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="AQg-fZ-nuL" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="0FT-Xl-bog"/>
                 <constraint firstItem="5xU-Eb-k81" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="6" id="7aQ-VU-j9H"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5xU-Eb-k81" secondAttribute="trailing" constant="16" id="A2I-E2-Yku"/>
                 <constraint firstItem="5xU-Eb-k81" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="DRe-Jo-dco"/>
                 <constraint firstItem="5xU-Eb-k81" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="EpD-lp-RQv"/>
+                <constraint firstItem="AQg-fZ-nuL" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="PRZ-9w-brL"/>
             </constraints>
             <point key="canvasLocation" x="140" y="134.48275862068965"/>
         </view>

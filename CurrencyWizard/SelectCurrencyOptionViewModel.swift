@@ -30,7 +30,7 @@ final class SelectCurrencyOptionViewModel {
 		self.setIsLoading(true)
 		self.requestCurrencyOptionsUseCase.request { (currencyOptions, error) in
 			guard error == nil else {
-				self.setIsLoading(true)
+				self.setIsLoading(false)
 				return
 			}
 			
