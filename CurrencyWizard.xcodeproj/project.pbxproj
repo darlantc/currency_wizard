@@ -28,6 +28,7 @@
 		0CE9216B25B47B76005CED5F /* LastUsedCurrencyOptionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9216A25B47B76005CED5F /* LastUsedCurrencyOptionsUseCase.swift */; };
 		0CE9217F25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9217E25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift */; };
 		0CE9218A25B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9218925B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift */; };
+		0CE9219325B52188005CED5F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9219225B52188005CED5F /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		0CE9216A25B47B76005CED5F /* LastUsedCurrencyOptionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastUsedCurrencyOptionsUseCase.swift; sourceTree = "<group>"; };
 		0CE9217E25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyOptionViewModel.swift; sourceTree = "<group>"; };
 		0CE9218925B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyOptionViewModelTests.swift; sourceTree = "<group>"; };
+		0CE9219225B52188005CED5F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE9217C25B510FA005CED5F /* SelectCurrencyOption */,
+				0CE9219125B52179005CED5F /* Utils */,
 			);
 			name = Presentation;
 			sourceTree = "<group>";
@@ -293,6 +296,14 @@
 				0CE9218925B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift */,
 			);
 			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		0CE9219125B52179005CED5F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9219225B52188005CED5F /* Observable.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,6 +442,7 @@
 				0CE920B725B3D787005CED5F /* AppDelegate.swift in Sources */,
 				0CE9217F25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift in Sources */,
 				0CE9216B25B47B76005CED5F /* LastUsedCurrencyOptionsUseCase.swift in Sources */,
+				0CE9219325B52188005CED5F /* Observable.swift in Sources */,
 				0CE9211325B3E03B005CED5F /* CurrencyOption.swift in Sources */,
 				0CE9211C25B3E093005CED5F /* CurrencyService.swift in Sources */,
 				0CE9212C25B3E1D6005CED5F /* RequestCurrencyOptionsUseCase.swift in Sources */,
