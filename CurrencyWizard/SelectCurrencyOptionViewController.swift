@@ -48,7 +48,23 @@ extension SelectCurrencyOptionViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return UITableViewCell()
+		let cell = dequeueReusableCell(for: tableView)
+		self.prepare(cell: cell, forIndex: indexPath.row)
+		
+		return cell
+	}
+	
+	private func dequeueReusableCell(for tableView: UITableView) -> UITableViewCell {
+		let cellIdentifier = "cell"
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) else {
+			return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
+		}
+		return cell
+	}
+	
+	private func prepare(cell: UITableViewCell, forIndex index: Int) {
+		let currencyOption = viewModel.currencyOptionsList.value[index]
+		cell.textLabel?.text = "\(currencyOption.id) - \(currencyOption.name)"
 	}
 }
 
