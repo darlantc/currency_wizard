@@ -12,7 +12,8 @@ final class SelectCurrencyOptionViewModel {
 	private let requestCurrencyOptionsUseCase: RequestCurrencyOptionsUseCase
 		
 	private var selectedIndex: Int? = nil
-	var currencyOptionsList = Observable([CurrencyOption]())
+	let isLoading: Observable<Bool> = Observable(false)
+	let currencyOptionsList = Observable([CurrencyOption]())
 	
 	init(
 		requestCurrencyOptionsUseCase: RequestCurrencyOptionsUseCase,
@@ -23,10 +24,15 @@ final class SelectCurrencyOptionViewModel {
 	}
 	
 	func requestCurrencyOptions() {
+		self.setIsLoading(true)
 		self.requestCurrencyOptionsUseCase.request { (currencyOptions, error) in
-			guard error == nil else { return }
+			guard error == nil else {
+				self.setIsLoading(true)
+				return
+			}
 			
 			self.currencyOptionsList.value = currencyOptions
+			self.setIsLoading(false)
 		}
 	}
 	
@@ -42,5 +48,9 @@ final class SelectCurrencyOptionViewModel {
 		guard let index = self.selectedIndex, self.currencyOptionsList.value.count > index else { return }
 		
 		self.didFinish(self.currencyOptionsList.value[index])
+	}
+	
+	private func setIsLoading(_ value: Bool) {
+		self.isLoading.value = value
 	}
 }
