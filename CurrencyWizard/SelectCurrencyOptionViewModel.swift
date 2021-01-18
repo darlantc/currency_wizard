@@ -12,7 +12,7 @@ final class SelectCurrencyOptionViewModel {
 	private let requestCurrencyOptionsUseCase: RequestCurrencyOptionsUseCase
 		
 	private var selectedIndex: Int? = nil
-	var currencyOptionsList = [CurrencyOption]()
+	var currencyOptionsList = Observable([CurrencyOption]())
 	
 	init(
 		requestCurrencyOptionsUseCase: RequestCurrencyOptionsUseCase,
@@ -26,12 +26,12 @@ final class SelectCurrencyOptionViewModel {
 		self.requestCurrencyOptionsUseCase.request { (currencyOptions, error) in
 			guard error == nil else { return }
 			
-			self.currencyOptionsList = currencyOptions
+			self.currencyOptionsList.value = currencyOptions
 		}
 	}
 	
 	func didSelect(at index: Int) {
-		guard self.currencyOptionsList.count > index else {
+		guard self.currencyOptionsList.value.count > index else {
 			self.selectedIndex = nil
 			return
 		}
@@ -39,8 +39,8 @@ final class SelectCurrencyOptionViewModel {
 	}
 	
 	func didFinishWithSelected() {
-		guard let index = self.selectedIndex, self.currencyOptionsList.count > index else { return }
+		guard let index = self.selectedIndex, self.currencyOptionsList.value.count > index else { return }
 		
-		self.didFinish(self.currencyOptionsList[index])
+		self.didFinish(self.currencyOptionsList.value[index])
 	}
 }

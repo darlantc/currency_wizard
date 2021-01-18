@@ -12,21 +12,21 @@ import XCTest
 class SelectCurrencyOptionViewModelTests: XCTestCase {
 	func test_initSUT_shouldHaveEmptyList() {
 		let sut = makeSUT()
-		XCTAssertTrue(sut.currencyOptionsList.isEmpty)
+		XCTAssertTrue(sut.currencyOptionsList.value.isEmpty)
 	}
 	
 	func test_requestCurrencyOptions_noneAvailableFromCurrencyService_shouldHaveEmptyList() {
 		let sut = makeSUT(options: [])
 		sut.requestCurrencyOptions()
-		XCTAssertTrue(sut.currencyOptionsList.isEmpty)
+		XCTAssertTrue(sut.currencyOptionsList.value.isEmpty)
 	}
 	
 	func test_requestCurrencyOptions_twoAvailableFromCurrencyService_shouldReturnBoth() {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
 		sut.requestCurrencyOptions()
-		XCTAssertEqual(sut.currencyOptionsList.count, 2)
-		XCTAssertEqual(sut.currencyOptionsList.first!, usdCurrencyOption)
-		XCTAssertEqual(sut.currencyOptionsList.last!, eurCurrencyOption)
+		XCTAssertEqual(sut.currencyOptionsList.value.count, 2)
+		XCTAssertEqual(sut.currencyOptionsList.value.first!, usdCurrencyOption)
+		XCTAssertEqual(sut.currencyOptionsList.value.last!, eurCurrencyOption)
 	}
 	
 	func test_withoutOptionsFromCurrencyService_withDidFinishCallback_shouldNotCall() {
