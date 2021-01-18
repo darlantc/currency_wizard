@@ -9,6 +9,11 @@ import XCTest
 @testable import CurrencyWizard
 
 class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
+	func test_initSUT_withHeaderText_shouldDisplayHeaderText() {
+		let sut = makeSUT(headerText: "Please select")
+		XCTAssertEqual(sut.headerLabel.text, "Please select")
+	}
+	
     func test_initSUT_withoutOptions_shouldHaveEmptyTableView() {
         let sut = makeSUT(options: [])
 		XCTAssertEqual(sut.tableView?.numberOfRows(), 0)
@@ -55,10 +60,11 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 	private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
 
 	func makeSUT(
+		headerText: String = "",
 		options: [CurrencyOption] = [],
 		didFinish: @escaping (CurrencyOption) -> Void = { _ in }
 	) -> SelectCurrencyOptionViewController {
-		let viewModel = makeViewModel(options: options, didFinish: didFinish)
+		let viewModel = makeViewModel(headerText: headerText, options: options, didFinish: didFinish)
 		let sut = SelectCurrencyOptionViewController(viewModel: viewModel)
 		let _ = sut.view
 		
@@ -67,12 +73,14 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 	}
 	
 	func makeViewModel(
+		headerText: String = "",
 		options: [CurrencyOption] = [],
 		didFinish: @escaping (CurrencyOption) -> Void = { _ in }
 	) -> SelectCurrencyOptionViewModel {
 		let currencyService = CurrencyServiceMock(options: options)
 		let requestCurrencyOptionsUseCase = RequestCurrencyOptionsUseCase(currencyService: currencyService)
 		return SelectCurrencyOptionViewModel(
+			headerText: headerText,
 			requestCurrencyOptionsUseCase: requestCurrencyOptionsUseCase,
 			didFinish: didFinish
 		)

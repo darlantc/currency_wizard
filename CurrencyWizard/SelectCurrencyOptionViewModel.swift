@@ -12,13 +12,16 @@ final class SelectCurrencyOptionViewModel {
 	private let requestCurrencyOptionsUseCase: RequestCurrencyOptionsUseCase
 		
 	private var selectedIndex: Int? = nil
+	let headerText: String
 	let isLoading: Observable<Bool> = Observable(false)
 	let currencyOptionsList = Observable([CurrencyOption]())
 	
 	init(
+		headerText: String,
 		requestCurrencyOptionsUseCase: RequestCurrencyOptionsUseCase,
 		didFinish: @escaping (CurrencyOption) -> Void
 	) {
+		self.headerText = headerText
 		self.requestCurrencyOptionsUseCase = requestCurrencyOptionsUseCase
 		self.didFinish = didFinish
 	}

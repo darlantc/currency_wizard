@@ -14,7 +14,11 @@ class SelectCurrencyOptionViewController: UIViewController {
 			tableView.dataSource = self
 		}
 	}
-	@IBOutlet weak var headerLabel: UILabel!
+	@IBOutlet weak var headerLabel: UILabel! {
+		didSet {
+			headerLabel.text = viewModel.headerText
+		}
+	}
 	
 	private var viewModel: SelectCurrencyOptionViewModel!
 

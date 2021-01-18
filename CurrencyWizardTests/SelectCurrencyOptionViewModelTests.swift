@@ -10,6 +10,11 @@ import XCTest
 @testable import CurrencyWizard
 
 class SelectCurrencyOptionViewModelTests: XCTestCase {
+	func test_initSUT_withHeaderText_shouldHaveHeaderText() {
+		let sut = makeSUT(headerText: "Please select")
+		XCTAssertEqual(sut.headerText, "Please select")
+	}
+	
 	func test_initSUT_shouldHaveEmptyList() {
 		let sut = makeSUT()
 		XCTAssertTrue(sut.currencyOptionsList.value.isEmpty)
@@ -71,12 +76,14 @@ class SelectCurrencyOptionViewModelTests: XCTestCase {
 	private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
 
 	func makeSUT(
+		headerText: String = "",
 		options: [CurrencyOption] = [],
 		didFinish: @escaping (CurrencyOption) -> Void = { _ in }
 	) -> SelectCurrencyOptionViewModel {
 		let currencyService = CurrencyServiceMock(options: options)
 		let requestCurrencyOptionsUseCase = RequestCurrencyOptionsUseCase(currencyService: currencyService)
 		return SelectCurrencyOptionViewModel(
+			headerText: headerText,
 			requestCurrencyOptionsUseCase: requestCurrencyOptionsUseCase,
 			didFinish: didFinish
 		)
