@@ -29,6 +29,9 @@
 		0CE9217F25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9217E25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift */; };
 		0CE9218A25B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9218925B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift */; };
 		0CE9219325B52188005CED5F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9219225B52188005CED5F /* Observable.swift */; };
+		0CE9219D25B52480005CED5F /* SelectCurrencyOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9219B25B52480005CED5F /* SelectCurrencyOptionViewController.swift */; };
+		0CE9219E25B52480005CED5F /* SelectCurrencyOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CE9219C25B52480005CED5F /* SelectCurrencyOptionViewController.xib */; };
+		0CE921A825B525EC005CED5F /* SelectCurrencyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE921A725B525EC005CED5F /* SelectCurrencyViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		0CE9217E25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyOptionViewModel.swift; sourceTree = "<group>"; };
 		0CE9218925B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyOptionViewModelTests.swift; sourceTree = "<group>"; };
 		0CE9219225B52188005CED5F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		0CE9219B25B52480005CED5F /* SelectCurrencyOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyOptionViewController.swift; sourceTree = "<group>"; };
+		0CE9219C25B52480005CED5F /* SelectCurrencyOptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCurrencyOptionViewController.xib; sourceTree = "<group>"; };
+		0CE921A725B525EC005CED5F /* SelectCurrencyViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +267,7 @@
 		0CE9217C25B510FA005CED5F /* SelectCurrencyOption */ = {
 			isa = PBXGroup;
 			children = (
+				0CE9219A25B52464005CED5F /* View */,
 				0CE9217D25B51102005CED5F /* ViewModel */,
 			);
 			name = SelectCurrencyOption;
@@ -285,6 +292,7 @@
 		0CE9218725B51123005CED5F /* SelectCurrencyOption */ = {
 			isa = PBXGroup;
 			children = (
+				0CE921A625B525D8005CED5F /* View */,
 				0CE9218825B51129005CED5F /* ViewModel */,
 			);
 			name = SelectCurrencyOption;
@@ -304,6 +312,23 @@
 				0CE9219225B52188005CED5F /* Observable.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		0CE9219A25B52464005CED5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9219B25B52480005CED5F /* SelectCurrencyOptionViewController.swift */,
+				0CE9219C25B52480005CED5F /* SelectCurrencyOptionViewController.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0CE921A625B525D8005CED5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0CE921A725B525EC005CED5F /* SelectCurrencyViewControllerTests.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CE9219E25B52480005CED5F /* SelectCurrencyOptionViewController.xib in Resources */,
 				0CE920C325B3D78A005CED5F /* LaunchScreen.storyboard in Resources */,
 				0CE920C025B3D78A005CED5F /* Assets.xcassets in Resources */,
 			);
@@ -436,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CE9219D25B52480005CED5F /* SelectCurrencyOptionViewController.swift in Sources */,
 				0CE9213425B3E5F9005CED5F /* ConvertCurrencyUseCase.swift in Sources */,
 				0CE9215925B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift in Sources */,
 				0CE9214725B3EF3F005CED5F /* LocalStorageService.swift in Sources */,
@@ -460,6 +487,7 @@
 				0CE9218A25B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift in Sources */,
 				0CE9216625B47B50005CED5F /* LastUsedCurrencyOptionsUseCaseTests.swift in Sources */,
 				0CE9213F25B3E67A005CED5F /* CurrencyServiceMock.swift in Sources */,
+				0CE921A825B525EC005CED5F /* SelectCurrencyViewControllerTests.swift in Sources */,
 				0CE9215E25B47434005CED5F /* LocalStorageServiceMock.swift in Sources */,
 				0CE9212325B3E0D8005CED5F /* RequestCurrencyOptionsUseCaseTests.swift in Sources */,
 			);
