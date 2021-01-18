@@ -32,6 +32,7 @@
 		0CE9219D25B52480005CED5F /* SelectCurrencyOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9219B25B52480005CED5F /* SelectCurrencyOptionViewController.swift */; };
 		0CE9219E25B52480005CED5F /* SelectCurrencyOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CE9219C25B52480005CED5F /* SelectCurrencyOptionViewController.xib */; };
 		0CE921A825B525EC005CED5F /* SelectCurrencyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE921A725B525EC005CED5F /* SelectCurrencyViewControllerTests.swift */; };
+		0CE921B625B52E13005CED5F /* UIViewControllerXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE921B525B52E13005CED5F /* UIViewControllerXCTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		0CE9219B25B52480005CED5F /* SelectCurrencyOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyOptionViewController.swift; sourceTree = "<group>"; };
 		0CE9219C25B52480005CED5F /* SelectCurrencyOptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCurrencyOptionViewController.xib; sourceTree = "<group>"; };
 		0CE921A725B525EC005CED5F /* SelectCurrencyViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewControllerTests.swift; sourceTree = "<group>"; };
+		0CE921B525B52E13005CED5F /* UIViewControllerXCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerXCTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 			children = (
 				0CE9213E25B3E67A005CED5F /* CurrencyServiceMock.swift */,
 				0CE9215D25B47434005CED5F /* LocalStorageServiceMock.swift */,
+				0CE921B525B52E13005CED5F /* UIViewControllerXCTestCase.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 			files = (
 				0CE9210925B3DA02005CED5F /* CurrencyServiceTests.swift in Sources */,
 				0CE9215125B472E6005CED5F /* FavoriteCurrencyOptionUseCaseTests.swift in Sources */,
+				0CE921B625B52E13005CED5F /* UIViewControllerXCTestCase.swift in Sources */,
 				0CE9214C25B3EF55005CED5F /* LocalStorageServiceTests.swift in Sources */,
 				0CE9213925B3E60A005CED5F /* ConvertCurrencyUseCaseTests.swift in Sources */,
 				0CE9218A25B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift in Sources */,
