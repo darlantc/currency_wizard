@@ -14,6 +14,7 @@ final class ConvertCurrenciesViewModel {
 	
 	var fromCurrencyOption: Observable<CurrencyOption?> = Observable(nil)
 	var toCurrencyOption: Observable<CurrencyOption?> = Observable(nil)
+	var convertedValue: Observable<Double?> = Observable(nil)
 
 	init(
 		convertCurrencyUseCase: ConvertCurrencyUseCase,
@@ -39,6 +40,14 @@ final class ConvertCurrenciesViewModel {
 	
 	func didWantToChangeToCurrencyOption() {
 		self.selectCurrencyOption { self.setTo(currencyOption: $0) }
+	}
+	
+	func convert(value: Double) {
+		guard let from = self.fromCurrencyOption.value, let to = self.toCurrencyOption.value else { return }
+	
+		self.convertCurrencyUseCase.convert(value: value, from: from, to: to) { (convertedValue) in
+			self.convertedValue.value = convertedValue
+		}
 	}
 	
 	private func getLastUsedFrom(useCase: LastUsedCurrencyOptionsUseCase) {

@@ -80,6 +80,36 @@ class ConvertCurrenciesViewModelTests: XCTestCase {
 		XCTAssertEqual(count, 2)
 	}
 	
+	func test_withoutLastUsed_convertValue_shouldBeNil() {
+		let sut = makeSUT(exchangeRateValue: 1)
+		
+		sut.convert(value: 100)
+		XCTAssertNil(sut.convertedValue.value)
+	}
+	
+	func test_convertValue_shouldReceiveCorrectConvertedValue() {
+		assertConvertedValuesWith(exchangeRateValue: 0)
+		assertConvertedValuesWith(exchangeRateValue: 0.827849)
+		assertConvertedValuesWith(exchangeRateValue: 1.0)
+		assertConvertedValuesWith(exchangeRateValue: 10180.000355)
+		assertConvertedValuesWith(exchangeRateValue: 2.7620287e-5)
+	}
+	
+	func assertConvertedValuesWith(exchangeRateValue: Double) {
+		let sut = makeSUT(
+			exchangeRateValue: exchangeRateValue,
+			lastUsedFromCurrencyOption: usdCurrencyOption,
+			lastUsedToCurrencyOption: eurCurrencyOption
+		)
+		
+		let valuesToTest = [0, 1, 100, Double.greatestFiniteMagnitude ]
+		
+		for value in valuesToTest {
+			sut.convert(value: value)
+			XCTAssertEqual(sut.convertedValue.value, value * exchangeRateValue)
+		}
+	}
+	
 	// MARK: Helpers
 	private let usdCurrencyOption = CurrencyOption(name: "United States Dollar", id: "USD")
 	private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
