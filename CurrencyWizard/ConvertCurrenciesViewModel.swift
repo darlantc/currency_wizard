@@ -10,16 +10,19 @@ import Foundation
 final class ConvertCurrenciesViewModel {
 	private let convertCurrencyUseCase: ConvertCurrencyUseCase
 	private let lastUsedCurrencyOptionsUseCase: LastUsedCurrencyOptionsUseCase
+	private let selectCurrencyOption: ((CurrencyOption) -> Void) -> Void
 	
 	var fromCurrencyOption: Observable<CurrencyOption?> = Observable(nil)
 	var toCurrencyOption: Observable<CurrencyOption?> = Observable(nil)
 
 	init(
 		convertCurrencyUseCase: ConvertCurrencyUseCase,
-		lastUsedCurrencyOptionsUseCase: LastUsedCurrencyOptionsUseCase
+		lastUsedCurrencyOptionsUseCase: LastUsedCurrencyOptionsUseCase,
+		selectCurrencyOption: @escaping ((CurrencyOption) -> Void) -> Void
 	) {
 		self.convertCurrencyUseCase = convertCurrencyUseCase
 		self.lastUsedCurrencyOptionsUseCase = lastUsedCurrencyOptionsUseCase
+		self.selectCurrencyOption = selectCurrencyOption
 		
 		self.getLastUsedFrom(useCase: lastUsedCurrencyOptionsUseCase)
 	}
@@ -28,6 +31,14 @@ final class ConvertCurrenciesViewModel {
 		let backupFrom = self.fromCurrencyOption.value
 		self.setFrom(currencyOption: self.toCurrencyOption.value)
 		self.setTo(currencyOption: backupFrom)
+	}
+	
+	func didWantToChangeFromCurrencyOption() {
+		self.selectCurrencyOption { self.setFrom(currencyOption: $0) }
+	}
+	
+	func didWantToChangeToCurrencyOption() {
+		self.selectCurrencyOption { self.setTo(currencyOption: $0) }
 	}
 	
 	private func getLastUsedFrom(useCase: LastUsedCurrencyOptionsUseCase) {
