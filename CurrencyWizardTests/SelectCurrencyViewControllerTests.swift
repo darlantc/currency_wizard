@@ -16,17 +16,38 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 	
 	func test_initSUT_withOptions_shouldHaveCells() {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
-		waitForLoadingExpectation()
-		
 		XCTAssertEqual(sut.tableView?.numberOfRows(), 2)
 	}
 	
 	func test_tableViewCell_displayCorrectValues() {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
-		waitForLoadingExpectation()
-		
 		XCTAssertEqual(sut.tableView.title(at: 0), "\(usdCurrencyOption.id) - \(usdCurrencyOption.name)")
 		XCTAssertEqual(sut.tableView.title(at: 1), "\(eurCurrencyOption.id) - \(eurCurrencyOption.name)")
+	}
+	
+	func test_selectTableViewRow_didFinishViewModelWithSelectedCurrencyOption() {
+		var selectedCurrencyOption: CurrencyOption? = nil
+		
+		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption], didFinish: { currencyOption in
+			selectedCurrencyOption = currencyOption
+		})
+		
+		sut.tableView.select(row: 0)
+		XCTAssertEqual(selectedCurrencyOption, usdCurrencyOption)
+		
+		sut.tableView.select(row: 1)
+		XCTAssertEqual(selectedCurrencyOption, eurCurrencyOption)
+	}
+	
+	func test_selectWrongTableViewRow_doesNothing() {
+		var selectedCurrencyOption: CurrencyOption? = nil
+		
+		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption], didFinish: { currencyOption in
+			selectedCurrencyOption = currencyOption
+		})
+		
+		sut.tableView.select(row: 4)
+		XCTAssertNil(selectedCurrencyOption)
 	}
 
 	// MARK: Helpers
@@ -34,11 +55,14 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 	private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
 
 	func makeSUT(
-		options: [CurrencyOption] = []
+		options: [CurrencyOption] = [],
+		didFinish: @escaping (CurrencyOption) -> Void = { _ in }
 	) -> SelectCurrencyOptionViewController {
-		let viewModel = makeViewModel(options: options)
+		let viewModel = makeViewModel(options: options, didFinish: didFinish)
 		let sut = SelectCurrencyOptionViewController(viewModel: viewModel)
 		let _ = sut.view
+		
+		waitForLoadingExpectation()
 		return sut
 	}
 	
@@ -66,5 +90,11 @@ private extension UITableView {
 	
 	func cell(at row: Int) -> UITableViewCell? {
 		return dataSource?.tableView(self, cellForRowAt: IndexPath(row: row, section: 0))
+	}
+	
+	func select(row: Int) {
+		let indexPath = IndexPath(row: row, section: 0)
+		selectRow(at: indexPath, animated: false, scrollPosition: .none)
+		delegate?.tableView?(self, didSelectRowAt: indexPath)
 	}
 }
