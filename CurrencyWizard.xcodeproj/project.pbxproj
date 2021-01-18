@@ -26,6 +26,8 @@
 		0CE9215E25B47434005CED5F /* LocalStorageServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9215D25B47434005CED5F /* LocalStorageServiceMock.swift */; };
 		0CE9216625B47B50005CED5F /* LastUsedCurrencyOptionsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9216525B47B50005CED5F /* LastUsedCurrencyOptionsUseCaseTests.swift */; };
 		0CE9216B25B47B76005CED5F /* LastUsedCurrencyOptionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9216A25B47B76005CED5F /* LastUsedCurrencyOptionsUseCase.swift */; };
+		0CE9217F25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9217E25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift */; };
+		0CE9218A25B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9218925B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		0CE9215D25B47434005CED5F /* LocalStorageServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageServiceMock.swift; sourceTree = "<group>"; };
 		0CE9216525B47B50005CED5F /* LastUsedCurrencyOptionsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastUsedCurrencyOptionsUseCaseTests.swift; sourceTree = "<group>"; };
 		0CE9216A25B47B76005CED5F /* LastUsedCurrencyOptionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastUsedCurrencyOptionsUseCase.swift; sourceTree = "<group>"; };
+		0CE9217E25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyOptionViewModel.swift; sourceTree = "<group>"; };
+		0CE9218925B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyOptionViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		0CE920B525B3D787005CED5F /* CurrencyWizard */ = {
 			isa = PBXGroup;
 			children = (
+				0CE9217B25B510E8005CED5F /* Presentation */,
 				0CE9211025B3E02C005CED5F /* Domain */,
 				0CE9211A25B3E082005CED5F /* Services */,
 				0CE920E925B3D7D1005CED5F /* Main */,
@@ -131,6 +136,7 @@
 		0CE920CC25B3D78A005CED5F /* CurrencyWizardTests */ = {
 			isa = PBXGroup;
 			children = (
+				0CE9218625B5111B005CED5F /* Presentation */,
 				0CE9212025B3E0CB005CED5F /* Domain */,
 				0CE9210725B3D9EE005CED5F /* Services */,
 				0CE9213D25B3E65B005CED5F /* Helpers */,
@@ -239,6 +245,54 @@
 				0CE9215D25B47434005CED5F /* LocalStorageServiceMock.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		0CE9217B25B510E8005CED5F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9217C25B510FA005CED5F /* SelectCurrencyOption */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		0CE9217C25B510FA005CED5F /* SelectCurrencyOption */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9217D25B51102005CED5F /* ViewModel */,
+			);
+			name = SelectCurrencyOption;
+			sourceTree = "<group>";
+		};
+		0CE9217D25B51102005CED5F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9217E25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		0CE9218625B5111B005CED5F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9218725B51123005CED5F /* SelectCurrencyOption */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		0CE9218725B51123005CED5F /* SelectCurrencyOption */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9218825B51129005CED5F /* ViewModel */,
+			);
+			name = SelectCurrencyOption;
+			sourceTree = "<group>";
+		};
+		0CE9218825B51129005CED5F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9218925B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +429,7 @@
 				0CE9215925B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift in Sources */,
 				0CE9214725B3EF3F005CED5F /* LocalStorageService.swift in Sources */,
 				0CE920B725B3D787005CED5F /* AppDelegate.swift in Sources */,
+				0CE9217F25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift in Sources */,
 				0CE9216B25B47B76005CED5F /* LastUsedCurrencyOptionsUseCase.swift in Sources */,
 				0CE9211325B3E03B005CED5F /* CurrencyOption.swift in Sources */,
 				0CE9211C25B3E093005CED5F /* CurrencyService.swift in Sources */,
@@ -390,6 +445,7 @@
 				0CE9215125B472E6005CED5F /* FavoriteCurrencyOptionUseCaseTests.swift in Sources */,
 				0CE9214C25B3EF55005CED5F /* LocalStorageServiceTests.swift in Sources */,
 				0CE9213925B3E60A005CED5F /* ConvertCurrencyUseCaseTests.swift in Sources */,
+				0CE9218A25B51131005CED5F /* SelectCurrencyOptionViewModelTests.swift in Sources */,
 				0CE9216625B47B50005CED5F /* LastUsedCurrencyOptionsUseCaseTests.swift in Sources */,
 				0CE9213F25B3E67A005CED5F /* CurrencyServiceMock.swift in Sources */,
 				0CE9215E25B47434005CED5F /* LocalStorageServiceMock.swift in Sources */,
