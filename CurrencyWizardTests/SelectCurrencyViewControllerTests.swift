@@ -16,16 +16,22 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 	
     func test_initSUT_withoutOptions_shouldHaveEmptyTableView() {
         let sut = makeSUT(options: [])
+		waitForLoadingExpectation()
+
 		XCTAssertEqual(sut.tableView?.numberOfRows(), 0)
     }
 	
 	func test_initSUT_withOptions_shouldHaveCells() {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
+		waitForLoadingExpectation()
+
 		XCTAssertEqual(sut.tableView?.numberOfRows(), 2)
 	}
 	
 	func test_tableViewCell_displayCorrectValues() {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
+		waitForLoadingExpectation()
+
 		XCTAssertEqual(sut.tableView.title(at: 0), "\(usdCurrencyOption.id) - \(usdCurrencyOption.name)")
 		XCTAssertEqual(sut.tableView.title(at: 1), "\(eurCurrencyOption.id) - \(eurCurrencyOption.name)")
 	}
@@ -36,6 +42,7 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption], didFinish: { currencyOption in
 			selectedCurrencyOption = currencyOption
 		})
+		waitForLoadingExpectation()
 		
 		sut.tableView.select(row: 0)
 		XCTAssertEqual(selectedCurrencyOption, usdCurrencyOption)
@@ -50,7 +57,8 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption], didFinish: { currencyOption in
 			selectedCurrencyOption = currencyOption
 		})
-		
+		waitForLoadingExpectation()
+
 		sut.tableView.select(row: 4)
 		XCTAssertNil(selectedCurrencyOption)
 	}
@@ -68,7 +76,6 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 		let sut = SelectCurrencyOptionViewController(viewModel: viewModel)
 		let _ = sut.view
 		
-		waitForLoadingExpectation()
 		return sut
 	}
 	
