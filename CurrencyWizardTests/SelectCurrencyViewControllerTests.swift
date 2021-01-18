@@ -11,14 +11,14 @@ import XCTest
 class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
     func test_initSUT_withoutOptions_shouldHaveEmptyTableView() throws {
         let sut = makeSUT(options: [])
-		XCTAssertEqual(sut.tableView?.numberOfRows(inSection: 0), 0)
+		XCTAssertEqual(sut.tableView?.numberOfRows(), 0)
     }
 	
 	func test_initSUT_withOptions_shouldHaveCells() throws {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
 		waitForLoadingExpectation()
 		
-		XCTAssertEqual(sut.tableView?.numberOfRows(inSection: 0), 2)
+		XCTAssertEqual(sut.tableView?.numberOfRows(), 2)
 	}
 
 	// MARK: Helpers
@@ -44,5 +44,11 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 			requestCurrencyOptionsUseCase: requestCurrencyOptionsUseCase,
 			didFinish: didFinish
 		)
+	}
+}
+
+private extension UITableView {
+	func numberOfRows() -> Int {
+		self.numberOfRows(inSection: 0)
 	}
 }
