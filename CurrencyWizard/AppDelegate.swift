@@ -65,13 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		let window = UIWindow(frame: UIScreen.main.bounds)
 		
+		let httpService: HttpService = URLSessionHttpService()
+		let currencyLayerAPIService = CurrencyLayerAPIService(httpService: httpService)
+		
 		let navigationController = UINavigationController()
 		
-		let options = [
-			CurrencyOption(name: "United States Dollar", id: "USD"),
-			CurrencyOption(name: "Euro", id: "EUR")
-		]
-		let currencyService: CurrencyService = CurrencyServiceMock(options: options, exchangeRateValue: 2)
+		let currencyService: CurrencyService = currencyLayerAPIService
 		let localStorageService: LocalStorageService = LocalStorageServiceMock(
 			idsList: [],
 			lastUsedFromCurrencyOption: CurrencyOption(name: "United States Dollar", id: "USD"),

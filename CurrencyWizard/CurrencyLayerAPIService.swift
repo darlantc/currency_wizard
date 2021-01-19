@@ -43,10 +43,7 @@ final class CurrencyLayerAPIService: CurrencyService {
 			
 			var result: Double = 0
 			if let quotes = jsonData["quotes"] as? [String: Double] {
-				let key = "\(from.id)\(to.id)"
-				if let exchangeRate = quotes[key] {
-					result = exchangeRate
-				}
+				result = self.getExchangeRate(origin: from.id, destination: to.id, withQuotes: quotes)
 			}
 			
 			completion(result)
@@ -66,5 +63,29 @@ final class CurrencyLayerAPIService: CurrencyService {
 		} catch {
 			return nil
 		}
+	}
+	
+	private func getExchangeRate(origin: String, destination: String, withQuotes quotes: [String: Double]) -> Double {
+		if origin == "USD" {
+			return self.exchangeRateFromUSD(to: destination, withQuotes: quotes)
+		}
+		
+		return self.exchangeRateFrom(origin, destination: destination, withQuotes: quotes)
+	}
+	
+	private func exchangeRateFrom(_ origin: String, destination: String, withQuotes quotes: [String: Double]) -> Double {
+		let originToUSDExchangeRate = 1 / exchangeRateFromUSD(to: origin, withQuotes: quotes)
+		
+		if origin == "USD" {
+			return originToUSDExchangeRate
+		}
+		
+		let usdToDestinationExchangeRate = exchangeRateFromUSD(to: destination, withQuotes: quotes)
+		return originToUSDExchangeRate * usdToDestinationExchangeRate
+	}
+		
+	private func exchangeRateFromUSD(to: String, withQuotes quotes: [String: Double]) -> Double {
+		let key = "USD\(to)"
+		return quotes[key] ?? 0
 	}
 }

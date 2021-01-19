@@ -11,3 +11,12 @@ protocol CurrencyService {
 	func requestCurrencyOptions(completion: @escaping ([CurrencyOption]) -> Void)
 	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: @escaping (Double) -> Void)
 }
+
+final class CurrencyServiceImplementation: CurrencyService {
+	func requestCurrencyOptions(completion: @escaping ([CurrencyOption]) -> Void) {
+		
+	}
+	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: @escaping (Double) -> Void) {
+		
+	}
+}
