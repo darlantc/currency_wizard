@@ -36,6 +36,7 @@ class ConvertCurrenciesViewController: UIViewController {
 	// MARK: IBAction
 	@IBAction func didSwapOptions(_ sender: Any) {
 		viewModel.swapCurrencyOptions()
+		self.convertValue()
 	}
 	@IBAction func didTapFromCurrencyOption(_ sender: Any) {
 		viewModel.didWantToChangeFromCurrencyOption()
@@ -84,8 +85,8 @@ class ConvertCurrenciesViewController: UIViewController {
 		button.setTitle(title, for: .normal)
 	}
 	
-	@objc private func textFieldDidChange(_ textField: UITextField) {
-		guard let text = textField.text,
+	private func convertValue() {
+		guard let text = self.valueTextField.text,
 			  !text.isEmpty,
 			  let value = NumberFormatter().number(from: text)?.doubleValue
 		else {
@@ -93,5 +94,9 @@ class ConvertCurrenciesViewController: UIViewController {
 			return
 		}
 		viewModel.convert(value: value)
+	}
+	
+	@objc private func textFieldDidChange(_ textField: UITextField) {
+		self.convertValue()
 	}
 }
