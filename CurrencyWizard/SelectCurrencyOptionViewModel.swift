@@ -8,7 +8,7 @@
 import Foundation
 
 final class SelectCurrencyOptionViewModel {
-	private let didFinish: (CurrencyOption) -> Void
+	private let didFinish: ((CurrencyOption) -> Void)?
 	private let requestCurrencyOptionsUseCase: RequestCurrencyOptionsUseCase
 		
 	private var selectedIndex: Int? = nil
@@ -19,7 +19,7 @@ final class SelectCurrencyOptionViewModel {
 	init(
 		headerText: String,
 		requestCurrencyOptionsUseCase: RequestCurrencyOptionsUseCase,
-		didFinish: @escaping (CurrencyOption) -> Void
+		didFinish: ((CurrencyOption) -> Void)?
 	) {
 		self.headerText = headerText
 		self.requestCurrencyOptionsUseCase = requestCurrencyOptionsUseCase
@@ -50,7 +50,7 @@ final class SelectCurrencyOptionViewModel {
 	func didFinishWithSelected() {
 		guard let index = self.selectedIndex, self.currencyOptionsList.value.count > index else { return }
 		
-		self.didFinish(self.currencyOptionsList.value[index])
+		self.didFinish?(self.currencyOptionsList.value[index])
 	}
 	
 	private func setIsLoading(_ value: Bool) {

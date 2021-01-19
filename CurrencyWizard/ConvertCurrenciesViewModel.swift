@@ -10,7 +10,7 @@ import Foundation
 final class ConvertCurrenciesViewModel {
 	private let convertCurrencyUseCase: ConvertCurrencyUseCase
 	private let lastUsedCurrencyOptionsUseCase: LastUsedCurrencyOptionsUseCase
-	private let selectCurrencyOption: ((CurrencyOption) -> Void) -> Void
+	private let selectCurrencyOption: (@escaping (CurrencyOption) -> Void) -> Void
 	
 	var fromCurrencyOption: Observable<CurrencyOption?> = Observable(nil)
 	var toCurrencyOption: Observable<CurrencyOption?> = Observable(nil)
@@ -19,7 +19,7 @@ final class ConvertCurrenciesViewModel {
 	init(
 		convertCurrencyUseCase: ConvertCurrencyUseCase,
 		lastUsedCurrencyOptionsUseCase: LastUsedCurrencyOptionsUseCase,
-		selectCurrencyOption: @escaping ((CurrencyOption) -> Void) -> Void
+		selectCurrencyOption: @escaping (@escaping (CurrencyOption) -> Void) -> Void
 	) {
 		self.convertCurrencyUseCase = convertCurrencyUseCase
 		self.lastUsedCurrencyOptionsUseCase = lastUsedCurrencyOptionsUseCase
