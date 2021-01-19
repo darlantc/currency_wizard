@@ -3,7 +3,9 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,63 +24,54 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zbv-RD-9He">
-                    <rect key="frame" x="20" y="162.66666666666666" width="335" height="269.33333333333337"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Zbv-RD-9He">
+                    <rect key="frame" x="20" y="166.66666666666666" width="335" height="80"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="9jO-hT-i1G">
-                            <rect key="frame" x="0.0" y="0.0" width="335" height="124.66666666666667"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8S-Ln-KSZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="18.666666666666668"/>
-                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZCB-0m-6y7">
-                                    <rect key="frame" x="0.0" y="24.666666666666686" width="335" height="100"/>
-                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="100" id="Ktb-8e-Pfc"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="26"/>
-                                    <state key="normal" title="United States Dólar (USD)">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="didTapFromCurrencyOption:" destination="-1" eventType="touchUpInside" id="nWT-nC-XA7"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="y9m-e1-OCG">
-                            <rect key="frame" x="0.0" y="144.66666666666666" width="335" height="124.66666666666666"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Para:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgU-7S-dCg">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="18.666666666666668"/>
-                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="SVh-G6-pnl">
-                                    <rect key="frame" x="0.0" y="24.666666666666686" width="335" height="100"/>
-                                    <color key="backgroundColor" red="0.0039215679279999997" green="0.54901957509999999" blue="0.82352942230000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="26"/>
-                                    <state key="normal" title="Reais (BRL)">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="didTapToCurrencyOption:" destination="-1" eventType="touchUpInside" id="VPD-rn-9md"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZCB-0m-6y7">
+                            <rect key="frame" x="0.0" y="0.0" width="139.66666666666666" height="80"/>
+                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="Ktb-8e-Pfc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
+                            <state key="normal" title="United States Dólar (USD)">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapFromCurrencyOption:" destination="-1" eventType="touchUpInside" id="nWT-nC-XA7"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-HW-vlv">
+                            <rect key="frame" x="147.66666666666666" y="0.0" width="40" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="IQv-g5-q7m"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal">
+                                <imageReference key="image" image="repeat" catalog="system" symbolScale="large"/>
+                            </state>
+                            <connections>
+                                <action selector="didSwapOptions:" destination="-1" eventType="touchUpInside" id="OPb-yY-y2G"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="SVh-G6-pnl">
+                            <rect key="frame" x="195.66666666666663" y="0.0" width="139.33333333333337" height="80"/>
+                            <color key="backgroundColor" red="0.0039215679279999997" green="0.54901957509999999" blue="0.82352942230000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
+                            <state key="normal" title="Reais (BRL)">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapToCurrencyOption:" destination="-1" eventType="touchUpInside" id="VPD-rn-9md"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="SVh-G6-pnl" firstAttribute="height" secondItem="ZCB-0m-6y7" secondAttribute="height" id="5CO-1v-Iyb"/>
+                        <constraint firstItem="SVh-G6-pnl" firstAttribute="width" secondItem="ZCB-0m-6y7" secondAttribute="width" id="NaU-PZ-clU"/>
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resultado:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kr-xz-oN6">
-                    <rect key="frame" x="20" y="472" width="335" height="20"/>
+                    <rect key="frame" x="20" y="266.66666666666669" width="335" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Tkn-5W-3az"/>
                     </constraints>
@@ -87,14 +80,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 reais" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4k-rr-wMP">
-                    <rect key="frame" x="20" y="498" width="335" height="46"/>
+                    <rect key="frame" x="20" y="290.66666666666669" width="335" height="60"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" placeholder="Insira o valor" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t40-U2-eR4" userLabel="valueInputText">
-                    <rect key="frame" x="20" y="72.666666666666671" width="335" height="60.000000000000014"/>
+                    <rect key="frame" x="20" y="86.666666666666671" width="335" height="60.000000000000014"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="uIZ-LA-oyJ"/>
                     </constraints>
@@ -102,7 +95,7 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartInsertDeleteType="no" smartQuotesType="no"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WU-q0-Qrq">
-                    <rect key="frame" x="20" y="54" width="335" height="18.666666666666671"/>
+                    <rect key="frame" x="20" y="63.999999999999993" width="335" height="18.666666666666664"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -113,25 +106,26 @@
             <constraints>
                 <constraint firstItem="t4k-rr-wMP" firstAttribute="trailing" secondItem="9Kr-xz-oN6" secondAttribute="trailing" id="1dc-0O-7aZ"/>
                 <constraint firstItem="t40-U2-eR4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="C5z-Je-ObS"/>
-                <constraint firstItem="t4k-rr-wMP" firstAttribute="height" secondItem="t40-U2-eR4" secondAttribute="height" multiplier="0.766667" id="CJc-HT-GXq"/>
+                <constraint firstItem="t4k-rr-wMP" firstAttribute="height" secondItem="t40-U2-eR4" secondAttribute="height" id="CJc-HT-GXq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zbv-RD-9He" secondAttribute="trailing" constant="20" id="D80-g4-Czg"/>
-                <constraint firstItem="t4k-rr-wMP" firstAttribute="top" secondItem="9Kr-xz-oN6" secondAttribute="bottom" constant="6" id="FL7-Qq-TJT"/>
+                <constraint firstItem="t4k-rr-wMP" firstAttribute="top" secondItem="9Kr-xz-oN6" secondAttribute="bottom" constant="4" id="FL7-Qq-TJT"/>
                 <constraint firstItem="t4k-rr-wMP" firstAttribute="leading" secondItem="9Kr-xz-oN6" secondAttribute="leading" id="GMP-Ec-YMi"/>
                 <constraint firstItem="9Kr-xz-oN6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="I1f-6t-FKH"/>
-                <constraint firstItem="t40-U2-eR4" firstAttribute="top" secondItem="0WU-q0-Qrq" secondAttribute="bottom" id="Kqp-RW-JKY"/>
+                <constraint firstItem="t40-U2-eR4" firstAttribute="top" secondItem="0WU-q0-Qrq" secondAttribute="bottom" constant="4" id="Kqp-RW-JKY"/>
                 <constraint firstItem="Zbv-RD-9He" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NeD-vj-wTd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9Kr-xz-oN6" secondAttribute="trailing" constant="20" id="Srn-IN-rsE"/>
-                <constraint firstItem="0WU-q0-Qrq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="TKe-dN-rwC"/>
+                <constraint firstItem="0WU-q0-Qrq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="TKe-dN-rwC"/>
                 <constraint firstItem="0WU-q0-Qrq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="WWx-UF-4Mg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0WU-q0-Qrq" secondAttribute="trailing" constant="20" id="kA1-7m-1q5"/>
-                <constraint firstItem="9Kr-xz-oN6" firstAttribute="top" secondItem="Zbv-RD-9He" secondAttribute="bottom" constant="40" id="kZl-Tb-CHQ"/>
-                <constraint firstItem="Zbv-RD-9He" firstAttribute="top" secondItem="t40-U2-eR4" secondAttribute="bottom" constant="30" id="ntr-Au-epO"/>
+                <constraint firstItem="9Kr-xz-oN6" firstAttribute="top" secondItem="Zbv-RD-9He" secondAttribute="bottom" constant="20" id="kZl-Tb-CHQ"/>
+                <constraint firstItem="Zbv-RD-9He" firstAttribute="top" secondItem="t40-U2-eR4" secondAttribute="bottom" constant="20" id="ntr-Au-epO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="t40-U2-eR4" secondAttribute="trailing" constant="20" id="sVJ-6A-K5p"/>
             </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="134.59821428571428"/>
         </view>
     </objects>
     <resources>
+        <image name="repeat" catalog="system" width="128" height="99"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

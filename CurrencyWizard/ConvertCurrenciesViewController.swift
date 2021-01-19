@@ -34,6 +34,9 @@ class ConvertCurrenciesViewController: UIViewController {
 	}
 	
 	// MARK: IBAction
+	@IBAction func didSwapOptions(_ sender: Any) {
+		viewModel.swapCurrencyOptions()
+	}
 	@IBAction func didTapFromCurrencyOption(_ sender: Any) {
 		viewModel.didWantToChangeFromCurrencyOption()
 	}
