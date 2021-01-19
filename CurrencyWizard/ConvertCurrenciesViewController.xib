@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -19,29 +19,29 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zbv-RD-9He">
-                    <rect key="frame" x="20" y="163" width="374" height="270"/>
+                    <rect key="frame" x="20" y="162.66666666666666" width="335" height="269.33333333333337"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="9jO-hT-i1G">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="125"/>
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="124.66666666666667"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8S-Ln-KSZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="19"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="18.666666666666668"/>
                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCB-0m-6y7">
-                                    <rect key="frame" x="0.0" y="25" width="374" height="100"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZCB-0m-6y7">
+                                    <rect key="frame" x="0.0" y="24.666666666666686" width="335" height="100"/>
                                     <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="100" id="Ktb-8e-Pfc"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="26"/>
-                                    <state key="normal" title="Dólar (USD)">
+                                    <state key="normal" title="United States Dólar (USD)">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
@@ -51,16 +51,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="y9m-e1-OCG">
-                            <rect key="frame" x="0.0" y="145" width="374" height="125"/>
+                            <rect key="frame" x="0.0" y="144.66666666666666" width="335" height="124.66666666666666"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Para:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgU-7S-dCg">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="19"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="18.666666666666668"/>
                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVh-G6-pnl">
-                                    <rect key="frame" x="0.0" y="25" width="374" height="100"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="SVh-G6-pnl">
+                                    <rect key="frame" x="0.0" y="24.666666666666686" width="335" height="100"/>
                                     <color key="backgroundColor" red="0.0039215679279999997" green="0.54901957509999999" blue="0.82352942230000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="26"/>
                                     <state key="normal" title="Reais (BRL)">
@@ -78,7 +78,7 @@
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resultado:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kr-xz-oN6">
-                    <rect key="frame" x="20" y="473" width="374" height="20"/>
+                    <rect key="frame" x="20" y="472" width="335" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Tkn-5W-3az"/>
                     </constraints>
@@ -87,14 +87,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 reais" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4k-rr-wMP">
-                    <rect key="frame" x="20" y="493" width="374" height="46"/>
+                    <rect key="frame" x="20" y="498" width="335" height="46"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" placeholder="Insira o valor" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t40-U2-eR4" userLabel="valueInputText">
-                    <rect key="frame" x="20" y="73" width="374" height="60"/>
+                    <rect key="frame" x="20" y="72.666666666666671" width="335" height="60.000000000000014"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="uIZ-LA-oyJ"/>
                     </constraints>
@@ -102,7 +102,7 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartInsertDeleteType="no" smartQuotesType="no"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WU-q0-Qrq">
-                    <rect key="frame" x="20" y="54" width="374" height="19"/>
+                    <rect key="frame" x="20" y="54" width="335" height="18.666666666666671"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -115,7 +115,7 @@
                 <constraint firstItem="t40-U2-eR4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="C5z-Je-ObS"/>
                 <constraint firstItem="t4k-rr-wMP" firstAttribute="height" secondItem="t40-U2-eR4" secondAttribute="height" multiplier="0.766667" id="CJc-HT-GXq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zbv-RD-9He" secondAttribute="trailing" constant="20" id="D80-g4-Czg"/>
-                <constraint firstItem="t4k-rr-wMP" firstAttribute="top" secondItem="9Kr-xz-oN6" secondAttribute="bottom" id="FL7-Qq-TJT"/>
+                <constraint firstItem="t4k-rr-wMP" firstAttribute="top" secondItem="9Kr-xz-oN6" secondAttribute="bottom" constant="6" id="FL7-Qq-TJT"/>
                 <constraint firstItem="t4k-rr-wMP" firstAttribute="leading" secondItem="9Kr-xz-oN6" secondAttribute="leading" id="GMP-Ec-YMi"/>
                 <constraint firstItem="9Kr-xz-oN6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="I1f-6t-FKH"/>
                 <constraint firstItem="t40-U2-eR4" firstAttribute="top" secondItem="0WU-q0-Qrq" secondAttribute="bottom" id="Kqp-RW-JKY"/>

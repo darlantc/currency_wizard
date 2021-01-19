@@ -11,14 +11,25 @@ class ConvertCurrenciesViewController: UIViewController {
 	// MARK: IBOutlet
 	@IBOutlet weak var valueTextField: UITextField! {
 		didSet {
+			valueTextField.addTarget(self,
+									 action: #selector(textFieldDidChange(_ :)),
+									 for: .editingChanged)
 			valueTextField.text = ""
 		}
 	}
-	@IBOutlet weak var fromCurrencyOptionButton: UIButton!
-	@IBOutlet weak var toCurrencyOptionButton: UIButton!
+	@IBOutlet weak var fromCurrencyOptionButton: UIButton! {
+		didSet {
+			fromCurrencyOptionButton?.titleLabel?.textAlignment = .center
+		}
+	}
+	@IBOutlet weak var toCurrencyOptionButton: UIButton! {
+		didSet {
+			toCurrencyOptionButton?.titleLabel?.textAlignment = .center
+		}
+	}
 	@IBOutlet weak var resultLabel: UILabel! {
 		didSet {
-			resultLabel.text = "-"
+			resultLabel.text = "0"
 		}
 	}
 	
@@ -68,12 +79,15 @@ class ConvertCurrenciesViewController: UIViewController {
 		
 		button.setTitle(title, for: .normal)
 	}
-}
-
-extension ConvertCurrenciesViewController: UITextFieldDelegate {
-	func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-		guard let textFieldValue = textField.text,
-			  let value = NumberFormatter().number(from: textFieldValue)?.doubleValue else { return }
+	
+	@objc private func textFieldDidChange(_ textField: UITextField) {
+		guard let text = textField.text,
+			  !text.isEmpty,
+			  let value = NumberFormatter().number(from: text)?.doubleValue
+		else {
+			viewModel.convert(value: 0)
+			return
+		}
 		viewModel.convert(value: value)
 	}
 }
