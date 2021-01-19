@@ -38,6 +38,9 @@
 		0CE921D425B553F7005CED5F /* ConvertCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE921D225B553F7005CED5F /* ConvertCurrenciesViewController.swift */; };
 		0CE921D525B553F7005CED5F /* ConvertCurrenciesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CE921D325B553F7005CED5F /* ConvertCurrenciesViewController.xib */; };
 		0CE921DE25B560A1005CED5F /* ConvertCurrenciesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE921DD25B560A1005CED5F /* ConvertCurrenciesViewControllerTests.swift */; };
+		0CE921F325B56615005CED5F /* PresentationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE921F225B56615005CED5F /* PresentationFactory.swift */; };
+		0CE9222025B67944005CED5F /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9221F25B67944005CED5F /* HttpService.swift */; };
+		0CE9222525B679D8005CED5F /* URLSessionHttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9222425B679D8005CED5F /* URLSessionHttpService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		0CE921D225B553F7005CED5F /* ConvertCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrenciesViewController.swift; sourceTree = "<group>"; };
 		0CE921D325B553F7005CED5F /* ConvertCurrenciesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConvertCurrenciesViewController.xib; sourceTree = "<group>"; };
 		0CE921DD25B560A1005CED5F /* ConvertCurrenciesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrenciesViewControllerTests.swift; sourceTree = "<group>"; };
+		0CE921F225B56615005CED5F /* PresentationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationFactory.swift; sourceTree = "<group>"; };
+		0CE9221F25B67944005CED5F /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
+		0CE9222425B679D8005CED5F /* URLSessionHttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHttpService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +228,7 @@
 		0CE9211A25B3E082005CED5F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0CE9221E25B67937005CED5F /* Network */,
 				0CE9211B25B3E093005CED5F /* CurrencyService.swift */,
 				0CE9214625B3EF3F005CED5F /* LocalStorageService.swift */,
 			);
@@ -274,6 +281,7 @@
 				0CE921BA25B53EC4005CED5F /* ConvertCurrencies */,
 				0CE9217C25B510FA005CED5F /* SelectCurrencyOption */,
 				0CE9219125B52179005CED5F /* Utils */,
+				0CE921F225B56615005CED5F /* PresentationFactory.swift */,
 			);
 			name = Presentation;
 			sourceTree = "<group>";
@@ -395,6 +403,15 @@
 				0CE921DD25B560A1005CED5F /* ConvertCurrenciesViewControllerTests.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		0CE9221E25B67937005CED5F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0CE9221F25B67944005CED5F /* HttpService.swift */,
+				0CE9222425B679D8005CED5F /* URLSessionHttpService.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,6 +550,7 @@
 				0CE9213425B3E5F9005CED5F /* ConvertCurrencyUseCase.swift in Sources */,
 				0CE9215925B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift in Sources */,
 				0CE9214725B3EF3F005CED5F /* LocalStorageService.swift in Sources */,
+				0CE921F325B56615005CED5F /* PresentationFactory.swift in Sources */,
 				0CE920B725B3D787005CED5F /* AppDelegate.swift in Sources */,
 				0CE9217F25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift in Sources */,
 				0CE921D425B553F7005CED5F /* ConvertCurrenciesViewController.swift in Sources */,
@@ -542,6 +560,8 @@
 				0CE9211C25B3E093005CED5F /* CurrencyService.swift in Sources */,
 				0CE921BD25B53EE2005CED5F /* ConvertCurrenciesViewModel.swift in Sources */,
 				0CE9212C25B3E1D6005CED5F /* RequestCurrencyOptionsUseCase.swift in Sources */,
+				0CE9222525B679D8005CED5F /* URLSessionHttpService.swift in Sources */,
+				0CE9222025B67944005CED5F /* HttpService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
