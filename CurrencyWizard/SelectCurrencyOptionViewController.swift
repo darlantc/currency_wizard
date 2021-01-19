@@ -76,7 +76,7 @@ extension SelectCurrencyOptionViewController: UITableViewDataSource {
 	
 	private func prepare(cell: UITableViewCell, forIndex index: Int) {
 		let currencyOption = viewModel.currencyOptionsList.value[index]
-		cell.textLabel?.text = "\(currencyOption.id) - \(currencyOption.name)"
+		cell.textLabel?.text = "\(currencyOption.name) (\(currencyOption.id))"
 	}
 }
 

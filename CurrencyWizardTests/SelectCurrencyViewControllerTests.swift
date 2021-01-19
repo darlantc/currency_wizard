@@ -39,8 +39,8 @@ class SelectCurrencyOptionViewControllerTests: UIViewControllerXCTestCase {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
 		waitForLoadingExpectation()
 
-		XCTAssertEqual(sut.tableView.title(at: 0), "\(usdCurrencyOption.id) - \(usdCurrencyOption.name)")
-		XCTAssertEqual(sut.tableView.title(at: 1), "\(eurCurrencyOption.id) - \(eurCurrencyOption.name)")
+		XCTAssertEqual(sut.tableView.title(at: 0), "\(usdCurrencyOption.name) (\(usdCurrencyOption.id))")
+		XCTAssertEqual(sut.tableView.title(at: 1), "\(eurCurrencyOption.name) (\(eurCurrencyOption.id))")
 	}
 	
 	func test_selectTableViewRow_didFinishViewModelWithSelectedCurrencyOption() {
