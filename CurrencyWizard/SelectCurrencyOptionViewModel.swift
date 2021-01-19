@@ -34,7 +34,7 @@ final class SelectCurrencyOptionViewModel {
 				return
 			}
 			
-			self.currencyOptionsList.value = currencyOptions
+			self.currencyOptionsList.value = currencyOptions.sorted { $0.name < $1.name }
 			self.setIsLoading(false)
 		}
 	}
