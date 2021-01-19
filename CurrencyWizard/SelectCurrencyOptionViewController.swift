@@ -15,11 +15,6 @@ class SelectCurrencyOptionViewController: UIViewController {
 			tableView.dataSource = self
 		}
 	}
-	@IBOutlet weak var headerLabel: UILabel! {
-		didSet {
-			headerLabel.text = viewModel.headerText
-		}
-	}
 	@IBOutlet weak var loadingView: UIActivityIndicatorView! {
 		didSet {
 			loadingView.isHidden = false
@@ -36,6 +31,7 @@ class SelectCurrencyOptionViewController: UIViewController {
 	// MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.title = viewModel.headerText
 		
 		self.bindToViewModel()
 		self.viewModel.requestCurrencyOptions()

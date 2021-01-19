@@ -53,6 +53,7 @@ class ConvertCurrenciesViewController: UIViewController {
 	// MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.title = "Currency Wizard"
 
 		self.bindToViewModel()
     }
