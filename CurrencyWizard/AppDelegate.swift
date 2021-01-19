@@ -7,23 +7,6 @@
 
 import UIKit
 
-private class CurrencyServiceMock: CurrencyService {
-	let options: [CurrencyOption]
-	let exchangeRateValue: Double
-	
-	init(options: [CurrencyOption] = [], exchangeRateValue: Double = 0) {
-		self.options = options
-		self.exchangeRateValue = exchangeRateValue
-	}
-	
-	func requestCurrencyOptions(completion: ([CurrencyOption]) -> Void) {
-		completion(self.options)
-	}
-	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: (Double) -> Void) {
-		completion(self.exchangeRateValue)
-	}
-}
-
 private class LocalStorageServiceMock: LocalStorageService {
 	private var idsList: [String]
 	private let didCallListener: ((String) -> Void)?

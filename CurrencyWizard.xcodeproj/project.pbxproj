@@ -41,6 +41,7 @@
 		0CE921F325B56615005CED5F /* PresentationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE921F225B56615005CED5F /* PresentationFactory.swift */; };
 		0CE9222025B67944005CED5F /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9221F25B67944005CED5F /* HttpService.swift */; };
 		0CE9222525B679D8005CED5F /* URLSessionHttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9222425B679D8005CED5F /* URLSessionHttpService.swift */; };
+		0CE9222A25B67C71005CED5F /* CurrencyLayerAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE9222925B67C71005CED5F /* CurrencyLayerAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		0CE921F225B56615005CED5F /* PresentationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationFactory.swift; sourceTree = "<group>"; };
 		0CE9221F25B67944005CED5F /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
 		0CE9222425B679D8005CED5F /* URLSessionHttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHttpService.swift; sourceTree = "<group>"; };
+		0CE9222925B67C71005CED5F /* CurrencyLayerAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLayerAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 			children = (
 				0CE9221E25B67937005CED5F /* Network */,
 				0CE9211B25B3E093005CED5F /* CurrencyService.swift */,
+				0CE9222925B67C71005CED5F /* CurrencyLayerAPIService.swift */,
 				0CE9214625B3EF3F005CED5F /* LocalStorageService.swift */,
 			);
 			name = Services;
@@ -547,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CE9219D25B52480005CED5F /* SelectCurrencyOptionViewController.swift in Sources */,
+				0CE9222A25B67C71005CED5F /* CurrencyLayerAPIService.swift in Sources */,
 				0CE9213425B3E5F9005CED5F /* ConvertCurrencyUseCase.swift in Sources */,
 				0CE9215925B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift in Sources */,
 				0CE9214725B3EF3F005CED5F /* LocalStorageService.swift in Sources */,
