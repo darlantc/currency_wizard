@@ -13,8 +13,11 @@ final class CurrencyLayerAPIService: CurrencyService {
 	
 	private let httpService: HttpService
 	
-	init(httpService: HttpService) {
+	private let notifyUpdatedExchangeRatesQuotes: ([String: Double]) -> Void
+	
+	init(httpService: HttpService, notifyUpdatedExchangeRatesQuotes: @escaping ([String: Double]) -> Void) {
 		self.httpService = httpService
+		self.notifyUpdatedExchangeRatesQuotes = notifyUpdatedExchangeRatesQuotes
 	}
 	
 	func requestCurrencyOptions(completion: @escaping ([CurrencyOption]) -> Void) {
@@ -43,6 +46,7 @@ final class CurrencyLayerAPIService: CurrencyService {
 			
 			var result: Double = 0
 			if let quotes = jsonData["quotes"] as? [String: Double] {
+				self.notifyUpdatedExchangeRatesQuotes(quotes)
 				result = self.getExchangeRate(origin: from.id, destination: to.id, withQuotes: quotes)
 			}
 			
