@@ -72,7 +72,7 @@ class ConvertCurrenciesViewController: UIViewController {
 		}
 		viewModel.convertedValue.observe(on: self) { convertedValue in
 			guard let value = convertedValue else { return }
-			self.resultLabel.text = "\(value)"
+			self.resultLabel.text = String(format: "%.2f", value)
 		}
 	}
 	
