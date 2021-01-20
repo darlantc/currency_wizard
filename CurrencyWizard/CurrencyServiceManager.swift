@@ -50,8 +50,8 @@ final class CurrencyServiceManager: CurrencyService {
 	}
 	
 	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: @escaping (Double) -> Void) {
-		let exchangeRate = self.exchangeRateFrom(
-			from.id,
+		let exchangeRate = self.getExchangeRate(
+			origin: from.id,
 			destination: to.id,
 			withQuotes: self.exchangeRateQuotes
 		)
