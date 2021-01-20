@@ -171,10 +171,15 @@ class LocalStorageServiceTests: XCTestCase {
 		let sut = makeSUT()
 		XCTAssertEqual(sut.internalCalls, [])
 		
-		sut.save(exchangeRates: ["USDEUR": 0.125])
+		let exchangeRateQuote = ExchangeRateQuote(
+			id: "USDEUR",
+			exchangeRate: 0.125
+		)
+		
+		sut.save(exchangeRates: [exchangeRateQuote])
 		XCTAssertEqual(sut.internalCalls, ["save(exchangeRates:"])
 		
-		sut.save(exchangeRates: ["USDEUR": 0.125])
+		sut.save(exchangeRates: [exchangeRateQuote])
 		XCTAssertEqual(sut.internalCalls, ["save(exchangeRates:", "save(exchangeRates:"])
 	}
 	
@@ -231,7 +236,7 @@ private class LocalStorageServiceStub: LocalStorageService {
 		self.didCall(function: "save(currencyOptionsList:")
 	}
 	
-	func save(exchangeRates: [String: Double]) {
+	func save(exchangeRates: [ExchangeRateQuote]) {
 		self.didCall(function: "save(exchangeRates:")
 	}
 	

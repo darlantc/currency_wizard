@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2F8E1925B7B54F007B3A75 /* CurrencyServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8E1825B7B54F007B3A75 /* CurrencyServiceManager.swift */; };
+		0C2F8E1E25B7BDFF007B3A75 /* ExchangeRateQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8E1D25B7BDFF007B3A75 /* ExchangeRateQuote.swift */; };
+		0CB6267625B796C0005BE75C /* UserDefaultsStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB6267525B796C0005BE75C /* UserDefaultsStorageService.swift */; };
 		0CE920B725B3D787005CED5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE920B625B3D787005CED5F /* AppDelegate.swift */; };
 		0CE920C025B3D78A005CED5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE920BF25B3D78A005CED5F /* Assets.xcassets */; };
 		0CE920C325B3D78A005CED5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE920C125B3D78A005CED5F /* LaunchScreen.storyboard */; };
@@ -62,6 +65,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C2F8E1825B7B54F007B3A75 /* CurrencyServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceManager.swift; sourceTree = "<group>"; };
+		0C2F8E1D25B7BDFF007B3A75 /* ExchangeRateQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateQuote.swift; sourceTree = "<group>"; };
+		0CB6267525B796C0005BE75C /* UserDefaultsStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageService.swift; sourceTree = "<group>"; };
 		0CE920B325B3D787005CED5F /* CurrencyWizard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyWizard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE920B625B3D787005CED5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE920BF25B3D78A005CED5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE9211225B3E03B005CED5F /* CurrencyOption.swift */,
+				0C2F8E1D25B7BDFF007B3A75 /* ExchangeRateQuote.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -232,8 +239,10 @@
 			children = (
 				0CE9221E25B67937005CED5F /* Network */,
 				0CE9211B25B3E093005CED5F /* CurrencyService.swift */,
+				0C2F8E1825B7B54F007B3A75 /* CurrencyServiceManager.swift */,
 				0CE9222925B67C71005CED5F /* CurrencyLayerAPIService.swift */,
 				0CE9214625B3EF3F005CED5F /* LocalStorageService.swift */,
+				0CB6267525B796C0005BE75C /* UserDefaultsStorageService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -552,10 +561,12 @@
 				0CE9219D25B52480005CED5F /* SelectCurrencyOptionViewController.swift in Sources */,
 				0CE9222A25B67C71005CED5F /* CurrencyLayerAPIService.swift in Sources */,
 				0CE9213425B3E5F9005CED5F /* ConvertCurrencyUseCase.swift in Sources */,
+				0C2F8E1925B7B54F007B3A75 /* CurrencyServiceManager.swift in Sources */,
 				0CE9215925B473EC005CED5F /* FavoriteCurrencyOptionUseCase.swift in Sources */,
 				0CE9214725B3EF3F005CED5F /* LocalStorageService.swift in Sources */,
 				0CE921F325B56615005CED5F /* PresentationFactory.swift in Sources */,
 				0CE920B725B3D787005CED5F /* AppDelegate.swift in Sources */,
+				0CB6267625B796C0005BE75C /* UserDefaultsStorageService.swift in Sources */,
 				0CE9217F25B5110C005CED5F /* SelectCurrencyOptionViewModel.swift in Sources */,
 				0CE921D425B553F7005CED5F /* ConvertCurrenciesViewController.swift in Sources */,
 				0CE9216B25B47B76005CED5F /* LastUsedCurrencyOptionsUseCase.swift in Sources */,
@@ -566,6 +577,7 @@
 				0CE9212C25B3E1D6005CED5F /* RequestCurrencyOptionsUseCase.swift in Sources */,
 				0CE9222525B679D8005CED5F /* URLSessionHttpService.swift in Sources */,
 				0CE9222025B67944005CED5F /* HttpService.swift in Sources */,
+				0C2F8E1E25B7BDFF007B3A75 /* ExchangeRateQuote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

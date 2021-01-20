@@ -89,6 +89,11 @@ private class CurrencyServiceStub: CurrencyService {
 		completion(1.0)
 	}
 	
+	func requestExchangeRateQuotes(completion: @escaping ([ExchangeRateQuote]) -> Void) {
+		self.didCall(function: "requestExchangeRateQuotes")
+		completion([])
+	}
+	
 	var internalCalls = [String]()
 	func didCall(function name: String) {
 		self.internalCalls.append(name)

@@ -10,15 +10,20 @@ import Foundation
 
 class CurrencyServiceMock: CurrencyService {
 	let options: [CurrencyOption]
+	let exchangeRateQuotes: [ExchangeRateQuote]
 	let exchangeRateValue: Double
 	
-	init(options: [CurrencyOption] = [], exchangeRateValue: Double = 0) {
+	init(options: [CurrencyOption] = [], exchangeRateQuotes: [ExchangeRateQuote] = [], exchangeRateValue: Double = 0) {
 		self.options = options
+		self.exchangeRateQuotes = exchangeRateQuotes
 		self.exchangeRateValue = exchangeRateValue
 	}
 	
 	func requestCurrencyOptions(completion: ([CurrencyOption]) -> Void) {
 		completion(self.options)
+	}
+	func requestExchangeRateQuotes(completion: @escaping ([ExchangeRateQuote]) -> Void) {
+		completion(self.exchangeRateQuotes)
 	}
 	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: (Double) -> Void) {
 		completion(self.exchangeRateValue)

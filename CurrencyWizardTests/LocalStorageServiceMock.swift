@@ -49,7 +49,7 @@ class LocalStorageServiceMock: LocalStorageService {
 		self.didCallListener?("save(currencyOptionsList:)")
 	}
 	
-	func save(exchangeRates: [String: Double]) {
+	func save(exchangeRates: [ExchangeRateQuote]) {
 		self.didCallListener?("save(exchangeRates:)")
 	}
 	

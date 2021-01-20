@@ -13,9 +13,9 @@ final class CurrencyLayerAPIService: CurrencyService {
 	
 	private let httpService: HttpService
 	
-	private let notifyUpdatedExchangeRatesQuotes: ([String: Double]) -> Void
+	private let notifyUpdatedExchangeRatesQuotes: ([ExchangeRateQuote]) -> Void
 	
-	init(httpService: HttpService, notifyUpdatedExchangeRatesQuotes: @escaping ([String: Double]) -> Void) {
+	init(httpService: HttpService, notifyUpdatedExchangeRatesQuotes: @escaping ([ExchangeRateQuote]) -> Void) {
 		self.httpService = httpService
 		self.notifyUpdatedExchangeRatesQuotes = notifyUpdatedExchangeRatesQuotes
 	}
@@ -37,20 +37,37 @@ final class CurrencyLayerAPIService: CurrencyService {
 			completion(resultList)
 		}
 	}
+	func requestExchangeRateQuotes(completion: @escaping ([ExchangeRateQuote]) -> Void) {
+		self.getQuotes(completion: completion)
+	}
+	
 	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: @escaping (Double) -> Void) {
+		self.getQuotes { (quotes) in
+			var result: Double = 0
+			self.notifyUpdatedExchangeRatesQuotes(quotes)
+			result = self.getExchangeRate(origin: from.id, destination: to.id, withQuotes: quotes)
+			
+			completion(result)
+		}
+	}
+	
+	private func getQuotes(completion: @escaping ([ExchangeRateQuote]) -> Void) {
+		var resultList = [ExchangeRateQuote]()
+
 		self.httpService.get(urlString: urlFor(method: "live")) { (statusCode, data, error) in
 			guard statusCode == 200, let data = data, let jsonData = self.jsonData(from: data) else {
-				completion(0)
+				completion(resultList)
 				return
 			}
 			
-			var result: Double = 0
 			if let quotes = jsonData["quotes"] as? [String: Double] {
-				self.notifyUpdatedExchangeRatesQuotes(quotes)
-				result = self.getExchangeRate(origin: from.id, destination: to.id, withQuotes: quotes)
+				for key in quotes.keys {
+					let quote = ExchangeRateQuote(id: key, exchangeRate: quotes[key] ?? 0)
+					resultList.append(quote)
+				}
 			}
 			
-			completion(result)
+			completion(resultList)
 		}
 	}
 	
