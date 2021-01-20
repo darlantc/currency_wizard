@@ -20,6 +20,14 @@ class SelectCurrencyOptionViewController: UIViewController {
 			loadingView.isHidden = false
 		}
 	}
+	@IBOutlet weak var searchTextField: UITextField! {
+		didSet {
+			searchTextField.addTarget(self,
+									 action: #selector(searchTextFieldDidChange(_ :)),
+									 for: .editingChanged)
+			searchTextField.text = ""
+		}
+	}
 	
 	private var viewModel: SelectCurrencyOptionViewModel!
 
@@ -39,6 +47,7 @@ class SelectCurrencyOptionViewController: UIViewController {
 	
 	// MARK: Utilities
 	private func bindToViewModel() {
+		viewModel.searchString.observe(on: self) { _ in self.updateViews() }
 		viewModel.currencyOptionsList.observe(on: self) { _ in self.updateViews() }
 		viewModel.isLoading.observe(on: self, observerCallback: self.updateViewsForIsLoading)
 	}
@@ -51,12 +60,16 @@ class SelectCurrencyOptionViewController: UIViewController {
 		self.tableView.isHidden = isLoading
 		self.loadingView.isHidden = !isLoading
 	}
+	
+	@objc private func searchTextFieldDidChange(_ textField: UITextField) {
+		self.viewModel.didSearch(textField.text ?? "")
+	}
 }
 
 // MARK: UITableViewDataSource
 extension SelectCurrencyOptionViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel.currencyOptionsList.value.count
+		return viewModel.filteredCurrencyOptionsList.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,7 +88,7 @@ extension SelectCurrencyOptionViewController: UITableViewDataSource {
 	}
 	
 	private func prepare(cell: UITableViewCell, forIndex index: Int) {
-		let currencyOption = viewModel.currencyOptionsList.value[index]
+		let currencyOption = viewModel.filteredCurrencyOptionsList[index]
 		cell.textLabel?.text = "\(currencyOption.name) (\(currencyOption.id))"
 	}
 }

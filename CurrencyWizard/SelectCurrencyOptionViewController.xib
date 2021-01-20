@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectCurrencyOptionViewController" customModule="CurrencyWizard" customModuleProvider="target">
             <connections>
                 <outlet property="loadingView" destination="AQg-fZ-nuL" id="RPa-GL-Bsp"/>
+                <outlet property="searchTextField" destination="KAX-OC-wE9" id="yTM-TF-6Gs"/>
                 <outlet property="tableView" destination="5xU-Eb-k81" id="WLJ-VV-lVk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,12 +22,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5xU-Eb-k81">
-                    <rect key="frame" x="16" y="44" width="343" height="740"/>
+                    <rect key="frame" x="16" y="90" width="343" height="694"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="AQg-fZ-nuL">
                     <rect key="frame" x="169" y="392.66666666666669" width="37" height="37"/>
                 </activityIndicatorView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="pesquise por nome ou símbolo..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KAX-OC-wE9">
+                    <rect key="frame" x="16" y="52" width="343" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -34,9 +40,12 @@
                 <constraint firstItem="AQg-fZ-nuL" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="0FT-Xl-bog"/>
                 <constraint firstItem="5xU-Eb-k81" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="6" id="7aQ-VU-j9H"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5xU-Eb-k81" secondAttribute="trailing" constant="16" id="A2I-E2-Yku"/>
-                <constraint firstItem="5xU-Eb-k81" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="DRe-Jo-dco"/>
                 <constraint firstItem="5xU-Eb-k81" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="EpD-lp-RQv"/>
+                <constraint firstItem="KAX-OC-wE9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Ga5-eZ-Oco"/>
+                <constraint firstItem="KAX-OC-wE9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="O3L-Pp-YCF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KAX-OC-wE9" secondAttribute="trailing" constant="16" id="Oiq-7c-zwg"/>
                 <constraint firstItem="AQg-fZ-nuL" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="PRZ-9w-brL"/>
+                <constraint firstItem="5xU-Eb-k81" firstAttribute="top" secondItem="KAX-OC-wE9" secondAttribute="bottom" constant="4" id="vsA-xp-wdZ"/>
             </constraints>
             <point key="canvasLocation" x="140" y="134.48275862068965"/>
         </view>
