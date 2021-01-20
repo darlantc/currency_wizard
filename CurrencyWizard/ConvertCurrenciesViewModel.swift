@@ -57,9 +57,19 @@ final class ConvertCurrenciesViewModel {
 	
 	private func setFrom(currencyOption: CurrencyOption?) {
 		self.fromCurrencyOption.value = currencyOption
+		self.saveLastUsed()
 	}
 	
 	private func setTo(currencyOption: CurrencyOption?) {
 		self.toCurrencyOption.value = currencyOption
+		self.saveLastUsed()
+	}
+	
+	private func saveLastUsed() {
+		guard let from = fromCurrencyOption.value, let to = self.toCurrencyOption.value else { return }
+		self.lastUsedCurrencyOptionsUseCase.saveLastUsedCurrencyOptions(
+			from: from,
+			to: to
+		)
 	}
 }
