@@ -36,10 +36,16 @@ final class CurrencyServiceManager: CurrencyService {
 	}
 	
 	func requestCurrencyOptions(completion: @escaping ([CurrencyOption]) -> Void) {
+		if self.currencyOptions.isEmpty {
+			self.refreshCache()
+		}
 		completion(self.currencyOptions)
 	}
 	
 	func requestExchangeRateQuotes(completion: @escaping ([ExchangeRateQuote]) -> Void) {
+		if self.exchangeRateQuotes.isEmpty {
+			self.refreshCache()
+		}
 		completion(self.exchangeRateQuotes)
 	}
 	
