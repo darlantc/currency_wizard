@@ -26,12 +26,12 @@ class SelectCurrencyOptionViewModelTests: XCTestCase {
 		XCTAssertTrue(sut.currencyOptionsList.value.isEmpty)
 	}
 	
-	func test_requestCurrencyOptions_twoAvailableFromCurrencyService_shouldReturnBoth() {
+	func test_requestCurrencyOptions_twoAvailableFromCurrencyService_shouldReturnBothOrdered() {
 		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption])
 		sut.requestCurrencyOptions()
 		XCTAssertEqual(sut.currencyOptionsList.value.count, 2)
-		XCTAssertEqual(sut.currencyOptionsList.value.first!, usdCurrencyOption)
-		XCTAssertEqual(sut.currencyOptionsList.value.last!, eurCurrencyOption)
+		XCTAssertEqual(sut.currencyOptionsList.value.first!, eurCurrencyOption)
+		XCTAssertEqual(sut.currencyOptionsList.value.last!, usdCurrencyOption)
 	}
 	
 	func test_withoutOptionsFromCurrencyService_withDidFinishCallback_shouldNotCall() {
@@ -49,7 +49,7 @@ class SelectCurrencyOptionViewModelTests: XCTestCase {
 		var count = 0
 		var selectedCurrencyOption: CurrencyOption? = nil
 		
-		let sut = makeSUT(options: [usdCurrencyOption, eurCurrencyOption], didFinish: { currencyOption in
+		let sut = makeSUT(options: [eurCurrencyOption, usdCurrencyOption], didFinish: { currencyOption in
 			count += 1
 			selectedCurrencyOption = currencyOption
 		})
@@ -57,18 +57,18 @@ class SelectCurrencyOptionViewModelTests: XCTestCase {
 		sut.didSelect(at: 0)
 		sut.didFinishWithSelected()
 		XCTAssertEqual(count, 1)
-		XCTAssertEqual(selectedCurrencyOption, usdCurrencyOption)
+		XCTAssertEqual(selectedCurrencyOption, eurCurrencyOption)
 		
 		sut.didSelect(at: 1)
 		sut.didFinishWithSelected()
 		XCTAssertEqual(count, 2)
-		XCTAssertEqual(selectedCurrencyOption, eurCurrencyOption)
+		XCTAssertEqual(selectedCurrencyOption, usdCurrencyOption)
 		
 		// Invalid index, should be ignored and assert equal last selected
 		sut.didSelect(at: 2)
 		sut.didFinishWithSelected()
 		XCTAssertEqual(count, 2)
-		XCTAssertEqual(selectedCurrencyOption, eurCurrencyOption)
+		XCTAssertEqual(selectedCurrencyOption, usdCurrencyOption)
 	}
 	
 	// MARK: Helpers
