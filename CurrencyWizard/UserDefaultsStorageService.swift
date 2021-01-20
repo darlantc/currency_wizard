@@ -29,6 +29,30 @@ final class UserDefaultsStorageService: LocalStorageService {
 		self.userDefaults = userDefaults
 	}
 	
+	func requestCurrencyOptions(completion: @escaping ([CurrencyOption]) -> Void) {
+		if self.currencyOptionsList.isEmpty,
+		   let data = self.getData(forKey: StorageKeys.currencyOptionsList),
+		   let savedList = try? PropertyListDecoder().decode(
+			Array<CurrencyOption>.self, from: data
+		   ) {
+			self.currencyOptionsList = savedList
+		}
+		
+		completion(self.currencyOptionsList)
+	}
+	
+	func requestExchangeRateQuotes(completion: @escaping ([ExchangeRateQuote]) -> Void) {
+		var exchangeRates = [ExchangeRateQuote]()
+		if let data = self.getData(forKey: StorageKeys.exchangeRates),
+		   let savedList = try? PropertyListDecoder().decode(
+			Array<ExchangeRateQuote>.self, from: data
+		   ) {
+			exchangeRates = savedList
+		}
+		
+		completion(exchangeRates)
+	}
+	
 	func requestLastUsedCurrencyOptions(completion: ((from: CurrencyOption, to: CurrencyOption)?) -> Void) {
 		let decoder = JSONDecoder()
 
@@ -98,40 +122,5 @@ final class UserDefaultsStorageService: LocalStorageService {
 	
 	private func getArray(forKey key: StorageKeys) -> [Any]? {
 		return self.userDefaults.array(forKey: key.rawValue)
-	}
-}
-
-extension UserDefaultsStorageService: CurrencyService {
-	func requestCurrencyOptions(completion: @escaping ([CurrencyOption]) -> Void) {
-		if self.currencyOptionsList.isEmpty,
-		   let data = self.getData(forKey: StorageKeys.currencyOptionsList),
-		   let savedList = try? PropertyListDecoder().decode(
-			Array<CurrencyOption>.self, from: data
-		   ) {
-			self.currencyOptionsList = savedList
-		}
-		
-		completion(self.currencyOptionsList)
-	}
-	
-	func requestExchangeRateQuotes(completion: @escaping ([ExchangeRateQuote]) -> Void) {
-	}
-	
-	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: @escaping (Double) -> Void) {
-		var exchangeRates = [ExchangeRateQuote]()
-		if let data = self.getData(forKey: StorageKeys.exchangeRates),
-		   let savedList = try? PropertyListDecoder().decode(
-			Array<ExchangeRateQuote>.self, from: data
-		   ) {
-			exchangeRates = savedList
-		}
-		
-		guard !exchangeRates.isEmpty else {
-			completion(0)
-			return
-		}
-		
-		let result = self.getExchangeRate(origin: from.id, destination: to.id, withQuotes: exchangeRates)
-		completion(result)
 	}
 }

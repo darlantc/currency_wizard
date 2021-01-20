@@ -15,6 +15,40 @@ class LocalStorageServiceTests: XCTestCase {
 		XCTAssertEqual(sut.internalCalls, [])
 	}
 	
+	func test_requestCurrencyOptions_shouldCallMethod() {
+		var requestResponse = [[CurrencyOption]]()
+		
+		func requestCallback(currencyOptions: [CurrencyOption]) -> Void {
+			requestResponse.append(currencyOptions)
+		}
+		
+		let sut = makeSUT(currencyOptions: [usdCurrencyOption, eurCurrencyOption])
+		sut.requestCurrencyOptions(completion: requestCallback)
+		XCTAssertEqual(requestResponse, [[usdCurrencyOption, eurCurrencyOption]])
+		XCTAssertEqual(sut.internalCalls, ["requestCurrencyOptions"])
+		
+		sut.requestCurrencyOptions(completion: requestCallback)
+		XCTAssertEqual(requestResponse, [[usdCurrencyOption, eurCurrencyOption], [usdCurrencyOption, eurCurrencyOption]])
+		XCTAssertEqual(sut.internalCalls, ["requestCurrencyOptions", "requestCurrencyOptions"])
+	}
+	
+	func test_requestExchangeRateQuotes_shouldCallMethod() {
+		var requestResponse = [[ExchangeRateQuote]]()
+		
+		func requestCallback(exchangeRateQuotes: [ExchangeRateQuote]) -> Void {
+			requestResponse.append(exchangeRateQuotes)
+		}
+		
+		let sut = makeSUT(exchangeRateQuotes: [exchangeRateQuote1, exchangeRateQuote2])
+		sut.requestExchangeRateQuotes(completion: requestCallback)
+		XCTAssertEqual(requestResponse, [[exchangeRateQuote1, exchangeRateQuote2]])
+		XCTAssertEqual(sut.internalCalls, ["requestExchangeRateQuotes"])
+		
+		sut.requestExchangeRateQuotes(completion: requestCallback)
+		XCTAssertEqual(requestResponse, [[exchangeRateQuote1, exchangeRateQuote2], [exchangeRateQuote1, exchangeRateQuote2]])
+		XCTAssertEqual(sut.internalCalls, ["requestExchangeRateQuotes", "requestExchangeRateQuotes"])
+	}
+	
 	func test_requestLastUsedCurrencyOptions_shouldCallMethod() {
 		var requestCount = 0
 		
@@ -171,26 +205,25 @@ class LocalStorageServiceTests: XCTestCase {
 		let sut = makeSUT()
 		XCTAssertEqual(sut.internalCalls, [])
 		
-		let exchangeRateQuote = ExchangeRateQuote(
-			id: "USDEUR",
-			exchangeRate: 0.125
-		)
-		
-		sut.save(exchangeRates: [exchangeRateQuote])
+		sut.save(exchangeRates: [exchangeRateQuote1])
 		XCTAssertEqual(sut.internalCalls, ["save(exchangeRates:"])
 		
-		sut.save(exchangeRates: [exchangeRateQuote])
+		sut.save(exchangeRates: [exchangeRateQuote2])
 		XCTAssertEqual(sut.internalCalls, ["save(exchangeRates:", "save(exchangeRates:"])
 	}
 	
 	// MARK: Helpers
 	private func makeSUT(
 		idsList: [String] = [],
+		currencyOptions: [CurrencyOption] = [],
+		exchangeRateQuotes: [ExchangeRateQuote] = [],
 		lastUsedFromCurrencyOption: CurrencyOption? = nil,
 		lastUsedToCurrencyOption: CurrencyOption? = nil
 	) -> LocalStorageServiceStub {
 		return LocalStorageServiceStub(
 			idsList,
+			currencyOptions: currencyOptions,
+			exchangeRateQuotes: exchangeRateQuotes,
 			lastUsedFromCurrencyOption: lastUsedFromCurrencyOption,
 			lastUsedToCurrencyOption: lastUsedToCurrencyOption
 		)
@@ -199,8 +232,12 @@ class LocalStorageServiceTests: XCTestCase {
 
 private let usdCurrencyOption = CurrencyOption(name: "United States Dollar", id: "USD")
 private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
+private let exchangeRateQuote1 = ExchangeRateQuote(id: "USDEUR", exchangeRate: 0.125)
+private let exchangeRateQuote2 = ExchangeRateQuote(id: "USDBRL", exchangeRate: 0.855)
 
 private class LocalStorageServiceStub: LocalStorageService {
+	private var currencyOptions: [CurrencyOption]
+	private var exchangeRateQuotes: [ExchangeRateQuote]
 	private var idsList: [String]
 	fileprivate var currencyOptionsList = [CurrencyOption]()
 	private (set) var lastUsedFromCurrencyOption: CurrencyOption?
@@ -208,12 +245,25 @@ private class LocalStorageServiceStub: LocalStorageService {
 	
 	init(
 		_ idsList: [String],
+		currencyOptions: [CurrencyOption] = [],
+		exchangeRateQuotes: [ExchangeRateQuote] = [],
 		lastUsedFromCurrencyOption: CurrencyOption? = nil,
 		lastUsedToCurrencyOption: CurrencyOption? = nil
 	) {
 		self.idsList = idsList
+		self.currencyOptions = currencyOptions
+		self.exchangeRateQuotes = exchangeRateQuotes
 		self.lastUsedFromCurrencyOption = lastUsedFromCurrencyOption
 		self.lastUsedToCurrencyOption = lastUsedToCurrencyOption
+	}
+	
+	func requestCurrencyOptions(completion: @escaping ([CurrencyOption]) -> Void) {
+		self.didCall(function: "requestCurrencyOptions")
+		completion(self.currencyOptions)
+	}
+	func requestExchangeRateQuotes(completion: @escaping([ExchangeRateQuote]) -> Void) {
+		self.didCall(function: "requestExchangeRateQuotes")
+		completion(self.exchangeRateQuotes)
 	}
 	
 	func requestLastUsedCurrencyOptions(completion: ((from: CurrencyOption, to: CurrencyOption)?) -> Void) {

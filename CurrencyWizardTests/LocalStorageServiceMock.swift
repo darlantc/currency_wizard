@@ -27,6 +27,15 @@ class LocalStorageServiceMock: LocalStorageService {
 		self.lastUsedToCurrencyOption = lastUsedToCurrencyOption
 	}
 	
+	func requestCurrencyOptions(completion: @escaping ([CurrencyOption]) -> Void) {
+		self.didCallListener?("requestCurrencyOptions")
+		completion([])
+	}
+	func requestExchangeRateQuotes(completion: @escaping([ExchangeRateQuote]) -> Void) {
+		self.didCallListener?("requestExchangeRateQuotes")
+		completion([])
+	}
+	
 	func requestLastUsedCurrencyOptions(completion: ((from: CurrencyOption, to: CurrencyOption)?) -> Void) {
 		self.didCallListener?("requestLastUsedCurrencyOptions")
 		
