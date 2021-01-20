@@ -8,8 +8,11 @@
 import Foundation
 
 protocol LocalStorageService {
+	var currencyOptionsList: [CurrencyOption] { get }
+	
 	func requestLastUsedCurrencyOptions(completion: ((from: CurrencyOption, to: CurrencyOption)?) -> Void)
 	func saveLastUsedCurrencyOptions(from fromCurrencyOption: CurrencyOption, to toCurrencyOption: CurrencyOption)
+	func save(currencyOptionsList: [CurrencyOption])
 	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void)
 	func favorite(currencyOption: CurrencyOption)
 	func removeFavorite(currencyOption: CurrencyOption)

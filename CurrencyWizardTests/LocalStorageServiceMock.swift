@@ -9,6 +9,7 @@ import Foundation
 @testable import CurrencyWizard
 
 class LocalStorageServiceMock: LocalStorageService {
+	var currencyOptionsList = [CurrencyOption]()
 	private var idsList: [String]
 	private let didCallListener: ((String) -> Void)?
 	private var lastUsedFromCurrencyOption: CurrencyOption?
@@ -41,6 +42,11 @@ class LocalStorageServiceMock: LocalStorageService {
 
 		self.lastUsedFromCurrencyOption = fromCurrencyOption
 		self.lastUsedToCurrencyOption = toCurrencyOption
+	}
+	
+	func save(currencyOptionsList: [CurrencyOption]) {
+		self.currencyOptionsList = currencyOptionsList
+		self.didCallListener?("save(currencyOptionsList:)")
 	}
 	
 	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void) {

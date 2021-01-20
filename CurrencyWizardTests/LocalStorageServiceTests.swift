@@ -156,6 +156,17 @@ class LocalStorageServiceTests: XCTestCase {
 		])
 	}
 	
+	func test_saveCurrencyOptionsList_shouldCallIt() {
+		let sut = makeSUT()
+		XCTAssertEqual(sut.internalCalls, [])
+		
+		sut.save(currencyOptionsList: [usdCurrencyOption, eurCurrencyOption])
+		XCTAssertEqual(sut.internalCalls, ["save(currencyOptionsList:"])
+		
+		sut.save(currencyOptionsList: [usdCurrencyOption, eurCurrencyOption])
+		XCTAssertEqual(sut.internalCalls, ["save(currencyOptionsList:", "save(currencyOptionsList:"])
+	}
+	
 	// MARK: Helpers
 	private func makeSUT(
 		idsList: [String] = [],
@@ -175,6 +186,7 @@ private let eurCurrencyOption = CurrencyOption(name: "Euro", id: "EUR")
 
 private class LocalStorageServiceStub: LocalStorageService {
 	private var idsList: [String]
+	fileprivate var currencyOptionsList = [CurrencyOption]()
 	private (set) var lastUsedFromCurrencyOption: CurrencyOption?
 	private (set) var lastUsedToCurrencyOption: CurrencyOption?
 	
@@ -201,6 +213,11 @@ private class LocalStorageServiceStub: LocalStorageService {
 	func saveLastUsedCurrencyOptions(from fromCurrencyOption: CurrencyOption, to toCurrencyOption: CurrencyOption) {
 		self.lastUsedFromCurrencyOption = fromCurrencyOption
 		self.lastUsedToCurrencyOption = toCurrencyOption
+	}
+	
+	func save(currencyOptionsList: [CurrencyOption]) {
+		self.currencyOptionsList = currencyOptionsList
+		self.didCall(function: "save(currencyOptionsList:")
 	}
 	
 	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void) {

@@ -8,6 +8,7 @@
 import UIKit
 
 private class LocalStorageServiceMock: LocalStorageService {
+	fileprivate var currencyOptionsList = [CurrencyOption]()
 	private var idsList: [String]
 	private let didCallListener: ((String) -> Void)?
 	private var lastUsedFromCurrencyOption: CurrencyOption?
@@ -40,6 +41,11 @@ private class LocalStorageServiceMock: LocalStorageService {
 		
 		self.lastUsedFromCurrencyOption = fromCurrencyOption
 		self.lastUsedToCurrencyOption = toCurrencyOption
+	}
+	
+	func save(currencyOptionsList: [CurrencyOption]) {
+		self.currencyOptionsList = currencyOptionsList
+		self.didCallListener?("requestLastUsedCurrencyOptions")
 	}
 	
 	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void) {
