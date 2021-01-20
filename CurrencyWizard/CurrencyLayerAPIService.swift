@@ -64,28 +64,4 @@ final class CurrencyLayerAPIService: CurrencyService {
 			return nil
 		}
 	}
-	
-	private func getExchangeRate(origin: String, destination: String, withQuotes quotes: [String: Double]) -> Double {
-		if origin == "USD" {
-			return self.exchangeRateFromUSD(to: destination, withQuotes: quotes)
-		}
-		
-		return self.exchangeRateFrom(origin, destination: destination, withQuotes: quotes)
-	}
-	
-	private func exchangeRateFrom(_ origin: String, destination: String, withQuotes quotes: [String: Double]) -> Double {
-		let originToUSDExchangeRate = 1 / exchangeRateFromUSD(to: origin, withQuotes: quotes)
-		
-		if origin == "USD" {
-			return originToUSDExchangeRate
-		}
-		
-		let usdToDestinationExchangeRate = exchangeRateFromUSD(to: destination, withQuotes: quotes)
-		return originToUSDExchangeRate * usdToDestinationExchangeRate
-	}
-		
-	private func exchangeRateFromUSD(to: String, withQuotes quotes: [String: Double]) -> Double {
-		let key = "USD\(to)"
-		return quotes[key] ?? 0
-	}
 }
