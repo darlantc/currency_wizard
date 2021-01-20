@@ -48,6 +48,10 @@ private class LocalStorageServiceMock: LocalStorageService {
 		self.didCallListener?("requestLastUsedCurrencyOptions")
 	}
 	
+	func save(exchangeRates: [String: Double]) {
+		self.didCallListener?("save(exchangeRates:)")
+	}
+	
 	func requestFavoriteCurrencyOptionIds(completion: ([String]) -> Void) {
 		self.didCallListener?("requestFavoriteCurrencyOptionIds")
 		completion(self.idsList)
