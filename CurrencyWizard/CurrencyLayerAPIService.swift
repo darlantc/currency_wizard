@@ -12,12 +12,9 @@ final class CurrencyLayerAPIService: CurrencyService {
 	private let baseURL = "http://api.currencylayer.com/"
 	
 	private let httpService: HttpService
-	
-	private let notifyUpdatedExchangeRatesQuotes: ([ExchangeRateQuote]) -> Void
-	
-	init(httpService: HttpService, notifyUpdatedExchangeRatesQuotes: @escaping ([ExchangeRateQuote]) -> Void) {
+		
+	init(httpService: HttpService) {
 		self.httpService = httpService
-		self.notifyUpdatedExchangeRatesQuotes = notifyUpdatedExchangeRatesQuotes
 	}
 	
 	func requestCurrencyOptions(completion: @escaping ([CurrencyOption]) -> Void) {
@@ -44,7 +41,6 @@ final class CurrencyLayerAPIService: CurrencyService {
 	func requestExchangeRate(from: CurrencyOption, to: CurrencyOption, completion: @escaping (Double) -> Void) {
 		self.getQuotes { (quotes) in
 			var result: Double = 0
-			self.notifyUpdatedExchangeRatesQuotes(quotes)
 			result = self.getExchangeRate(origin: from.id, destination: to.id, withQuotes: quotes)
 			
 			completion(result)
