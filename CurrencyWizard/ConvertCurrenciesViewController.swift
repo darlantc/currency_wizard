@@ -86,17 +86,21 @@ class ConvertCurrenciesViewController: UIViewController {
 	}
 	
 	private func convertValue() {
-		guard let text = self.valueTextField.text,
+		viewModel.convert()
+	}
+	
+	private func setValue() {
+		var newValue: Double = 0
+		if let text = self.valueTextField.text,
 			  !text.isEmpty,
-			  let value = NumberFormatter().number(from: text)?.doubleValue
-		else {
-			viewModel.convert(value: 0)
-			return
+			  let value = NumberFormatter().number(from: text)?.doubleValue {
+			newValue = value
 		}
-		viewModel.convert(value: value)
+		viewModel.set(value: newValue)
 	}
 	
 	@objc private func textFieldDidChange(_ textField: UITextField) {
+		self.setValue()
 		self.convertValue()
 	}
 }
